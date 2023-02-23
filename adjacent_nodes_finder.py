@@ -2,7 +2,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-02-23 02:49:04
+LastEditTime: 2023-02-23 04:45:15
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -31,8 +31,9 @@ net_grammar=r"""
     component_path: /(\w|\/)+/
     net_alias: CNAME
 
-    regular_wiring_statement: "ROUTED" wire ("NEW" wire)*
-    wire: layer "(" x y z? ")" ["(" x_ y_ z_? ")"] [via_name] 
+    regular_wiring_statement: wire1 (wire)*
+    wire1: "ROUTED" layer "(" x y z? ")" ["(" x_ y_ z_? ")"] [via_name] 
+    wire: "NEW" layer "(" x y z? ")" ["(" x_ y_ z_? ")"] [via_name] 
     layer: CNAME
     x:NUMBER|"*"
     y:NUMBER|"*"
@@ -51,17 +52,15 @@ net_grammar=r"""
 
 class soc_node:
     name=None
-    alias=[]
-    layout=[]
+    layout=None
     location=[0,0]
 
-    def __init__(self, name, alias, layout, location) -> None:
+    def __init__(self, name, layout, location) -> None:
         self.name=name
-        self.alias=alias
         self.layout=layout
         self.location=location
 
-# {net_name: [pin_name, aliasing_dict{component: alias}, wire_dict{layer: start_point}]}
+# {net_name: [pin_name, aliasing_dict{component: alias}, first_wire[layer, start_point]]}
 class data_transformer(Transformer):
     def net_list(self, nets):
         return dict(nets)
@@ -90,9 +89,9 @@ class data_transformer(Transformer):
         return str(name[0])
     
     def regular_wiring_statement(self, wire_list):
-        return dict(wire_list)
+        return list(wire_list[0])
     
-    def wire(self, wire_info):
+    def wire1(self, wire_info):
         layer, other_info=wire_info[0], [wire_info[1],wire_info[2]]
         return layer, other_info
     
@@ -107,13 +106,15 @@ class data_transformer(Transformer):
 
 def sorting(node:soc_node)->Tuple[soc_node, float, soc_node, float]:
     
-    # TODO: logic problem. n1 is the nearest node of n2, but we can't be sure that n2 is the nearest node of n1
+    # TODO: DIscuss: logic problem. n1 is the nearest node of n2, but we can't be sure that n2 is the nearest node of n1
     # finding all the node in the same layout.
     node_in_same_layout_list=[]
     for n in node_list:
         if n.layout==node.layout:
             node_in_same_layout_list.append([n, 0]) #[another node, distance to a specified node]
     node_in_same_layout_list.remove([node, 0]) # remove node itself
+    for node in node_in_same_layout_list:
+        print(node.layout)
 
     # calculate euclidean distances between node (wire starting point) and other nodes (starting point)
     # TODO: Discuss: we should calculate the nearest distance between two broken lines instead of starting node?
@@ -138,7 +139,7 @@ def file_sparser(file_name:str, node_map:str=None) -> List[soc_node]:
     # read the file which is our target
     with open(file_name, "r") as input_file:
         data = input_file.read()
-    net_input = data[data.find("NETS") + 4 : data.find("END NETS")]
+    net_input = data[data.find("NETS") + 13 : data.find("END NETS")]
     
     # sparse the doc.def and get all the useful information of each node
     net_parser = Lark(net_grammar, start='net_list')
@@ -146,6 +147,7 @@ def file_sparser(file_name:str, node_map:str=None) -> List[soc_node]:
 
     # transform data to a dictionary
     all_node=data_transformer().transform(net_data)
+    
 
     # extract nodes that are needed
     if node_map!=None:
@@ -160,8 +162,13 @@ def file_sparser(file_name:str, node_map:str=None) -> List[soc_node]:
     else:
         node_in_need_dict=all_node
 
+    # here is aiming at extract the first wire and its info, and bind them with a node. 
+    node_in_need=[]
     for k,v in node_in_need_dict.items():
-        node_obj=soc_node(k, v[0], v[1], [v[2], v[3]])
+        if v[2]==None:
+            node_obj=soc_node(k, None, [0,0] )
+        else:
+            node_obj=soc_node(k, v[2][0], v[2][1] )
         node_in_need.append(node_obj)
 
     return node_in_need
@@ -172,17 +179,20 @@ def main():
     print("#######################################################################\n")
     
     if len(sys.argv)<=1:
-        node_list=file_sparser("ibex_top_working.def")
+        # full list is toooooo large, my pc isn't able to parse it, here I used a simplified version
+        # node_list=file_sparser("ibex_top_working.def")
+        node_list=file_sparser("try.txt")
     else:
-        node_list=file_sparser("ibex_top_working.def", sys.argv[1])
-    exit(0)
+        # node_list=file_sparser("ibex_top_working.def", sys.argv[1])
+        node_list=file_sparser("try.txt", sys.argv[1])
+
     # create pairs
-    with open(sys.argv[1], "w") as output:
+    with open("pair.map", "w") as output:
         while len(node_list)>0:
             # get net couple
             if len(node_list)%2==0:
                 n1=random.sample(node_list, 1)
-                n2=sorting(n1)[0]
+                n2= sorting(n1)[0]
                 pair=[n1, n2]
                 node_list.remove(pair[0])
                 node_list.remove(pair[1])
