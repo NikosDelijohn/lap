@@ -1,8 +1,10 @@
+# coding=utf-8
+
 '''
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-02-23 04:45:15
+LastEditTime: 2023-02-25 21:03:11
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -13,8 +15,13 @@ from lark import Transformer
 import math
 from typing import List, Dict, Tuple, Any
 import random
-import os
 import sys
+import argparse as ap
+
+functional_unit_list={"adder":"u_ibex_core/ex_block_i/alu_i/alu_32bit_adder/",
+                 "lsu":"u_ibex_core/load_store_unit_i/",
+                 "compressed_decoder":"u_ibex_core/if_stage_i/compressed_decoder_i/",
+                 "decoder":"u_ibex_core/id_stage_i/decoder_i/"}
 
 node_list=[] #contains all the node in the SoC
 
@@ -31,16 +38,16 @@ net_grammar=r"""
     component_path: /(\w|\/)+/
     net_alias: CNAME
 
-    regular_wiring_statement: wire1 (wire)*
-    wire1: "ROUTED" layer "(" x y z? ")" ["(" x_ y_ z_? ")"] [via_name] 
-    wire: "NEW" layer "(" x y z? ")" ["(" x_ y_ z_? ")"] [via_name] 
+    regular_wiring_statement: (wire)+ 
+    wire: WIRE_TYPE layer "(" x y EXT_VAL? ")" ["(" x_ y_ EXT_VAL_? ")"] [via_name]  
+    WIRE_TYPE: ("ROUTED"|"NEW")~1
     layer: CNAME
-    x:NUMBER|"*"
-    y:NUMBER|"*"
-    z:NUMBER|"*"
-    x_:NUMBER|"*"
-    y_:NUMBER|"*"
-    z_:NUMBER|"*"
+    x: NUMBER
+    y: NUMBER
+    EXT_VAL: NUMBER
+    x_: NUMBER|/\*/
+    y_: NUMBER|/\*/
+    EXT_VAL_: NUMBER
     via_name: CNAME
 
     %import common.SIGNED_NUMBER    
@@ -59,8 +66,19 @@ class soc_node:
         self.name=name
         self.layout=layout
         self.location=location
+    
+    def check_name(self):
+        print(self.name)
 
-# {net_name: [pin_name, aliasing_dict{component: alias}, first_wire[layer, start_point]]}
+    def check_layout(self):
+        print(self.layout)
+
+    def check_location(self):
+        print(f"###############################")
+        print(f"x={self.location[0]}")
+        print(f"y={self.location[1]}")
+
+# {net_name: [pin_name, aliasing_dict{component: alias}, wire_list[[wire_type, layer, start_point], ...]], ...}
 class data_transformer(Transformer):
     def net_list(self, nets):
         return dict(nets)
@@ -89,24 +107,27 @@ class data_transformer(Transformer):
         return str(name[0])
     
     def regular_wiring_statement(self, wire_list):
-        return list(wire_list[0])
+        return list(wire_list)
     
-    def wire1(self, wire_info):
-        layer, other_info=wire_info[0], [wire_info[1],wire_info[2]]
-        return layer, other_info
+    def wire(self, wire_info):
+        tp, layer, coordinate=wire_info[0], wire_info[1], [wire_info[2], wire_info[3]]
+        return tp, layer, coordinate
     
-    def layer(self, layer_name):
-        return str(layer_name[0])
+    def WIRE_TYPE(self, tp):
+        return str(tp)
     
-    def x(self, val):
-        return int(val[0])
+    def layer(self, l):
+        return str(l[0])
     
-    def y(self, val):
-        return int(val[0])
+    def x(self, n):
+        return str(n[0])
+    
+    def y(self, n):
+        return str(n[0])
 
 def sorting(node:soc_node)->Tuple[soc_node, float, soc_node, float]:
     
-    # TODO: DIscuss: logic problem. n1 is the nearest node of n2, but we can't be sure that n2 is the nearest node of n1
+    # TODO: 两点重复的pair要删掉，有不重复的pair就要保留
     # finding all the node in the same layout.
     node_in_same_layout_list=[]
     for n in node_list:
@@ -117,7 +138,7 @@ def sorting(node:soc_node)->Tuple[soc_node, float, soc_node, float]:
         print(node.layout)
 
     # calculate euclidean distances between node (wire starting point) and other nodes (starting point)
-    # TODO: Discuss: we should calculate the nearest distance between two broken lines instead of starting node?
+    # TODO: 计算起始点的距离就行了
     nearest_node=node_in_same_layout_list[0]
     second_nearest_node=nearest_node
     distance=math.dist(node_in_same_layout_list[0].location, node.location)
@@ -133,7 +154,7 @@ def sorting(node:soc_node)->Tuple[soc_node, float, soc_node, float]:
 
     return nearest_node, distance, second_nearest_node, second_distance
 
-def file_sparser(file_name:str, node_map:str=None) -> List[soc_node]:
+def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[soc_node]:
     all_node={}
 
     # read the file which is our target
@@ -141,53 +162,75 @@ def file_sparser(file_name:str, node_map:str=None) -> List[soc_node]:
         data = input_file.read()
     net_input = data[data.find("NETS") + 13 : data.find("END NETS")]
     
-    # sparse the doc.def and get all the useful information of each node
+    # parse the doc.def and get all the useful information of each node
     net_parser = Lark(net_grammar, start='net_list')
     net_data = net_parser.parse(net_input)
 
     # transform data to a dictionary
     all_node=data_transformer().transform(net_data)
+    # print(all_node)
+    # print(targeted_functional_unit)
     
-
     # extract nodes that are needed
-    if node_map!=None:
-        with open (node_map, "r") as map_file:
-            map_list=map_file.readlines()
-        
-        node_in_need={}
-        for node_path in map_list:
-            for node, info in all_node.items():
-                if node_path in info[0]:
-                    node_in_need[node]=info
+    node_in_need_dict={}
+    if targeted_functional_unit!=None and targeted_functional_unit in functional_unit_list.keys():
+        for node_name, node_info in all_node.items():
+            if functional_unit_list[targeted_functional_unit] in node_name:
+                node_in_need_dict[node_name]=node_info
     else:
+        print("\033[31m[warning]\033[0m you didn't specify any available functional unit!")
         node_in_need_dict=all_node
 
     # here is aiming at extract the first wire and its info, and bind them with a node. 
     node_in_need=[]
-    for k,v in node_in_need_dict.items():
-        if v[2]==None:
-            node_obj=soc_node(k, None, [0,0] )
+    for node_name, node_info in node_in_need_dict.items():
+        if node_info[2]==None:
+            node_obj=soc_node(node_name, None, [0,0] )
         else:
-            node_obj=soc_node(k, v[2][0], v[2][1] )
+            node_obj=soc_node(node_name, node_info[2][0][1], node_info[2][0][2] )
         node_in_need.append(node_obj)
 
     return node_in_need
 
 def main():
-    print("#######################################################################")
-    print("##  \033[33mHINT\033[0m: argv[1] is the functional unit's node map, eg.'adder.map'  ##")
-    print("#######################################################################\n")
+    param_parser=ap.ArgumentParser(
+        prog="adjacent_nodes_finder.py",
+        description="This file is intended to parse the NETS segment of the '.def' file. \
+            It accepts the name of target functional unit to filter other unexpected nodes",
+        epilog=None
+    )
+
+    param_parser.add_argument("-fu","--functional_unit",
+                                action="store",
+                                choices=["adder", "decoder", "compressed_decoder", "lsu"],
+                                help="This argument specifies the targeted functional unit, \
+                                    if 'None' is the param, the program will add all the nodes of the processor.",
+                                required=False
+                                )
+    param_parser.add_argument('-f', "--file_name",
+                                action='store',
+                                help="This argument indicates a 'xxx.def' file, or a text file with NETS segment.",
+                                required=True,
+                                metavar="xxx.def"
+                                )  # on/off flag
+    param_parser.add_argument('-of','--output_file',
+                                action='store',
+                                help="this argument indicetes the output file 'xxx.map' of the program, \
+                                default value is 'pair.map'",
+                                default="pair.map",
+                                metavar="xxx_pair.map")    
+    args=param_parser.parse_args()
     
-    if len(sys.argv)<=1:
-        # full list is toooooo large, my pc isn't able to parse it, here I used a simplified version
-        # node_list=file_sparser("ibex_top_working.def")
-        node_list=file_sparser("try.txt")
-    else:
-        # node_list=file_sparser("ibex_top_working.def", sys.argv[1])
-        node_list=file_sparser("try.txt", sys.argv[1])
+    print("#######################")
+    print("##  \033[33mPROGRAM START\033[0m:   ##")
+    print("#######################")
+
+    # node_list=file_parser("ibex_top_working.def")
+    node_list=file_parser(args.file_name, args.functional_unit)
+    exit(0)
 
     # create pairs
-    with open("pair.map", "w") as output:
+    with open(param_parser.output_file, "w") as output:
         while len(node_list)>0:
             # get net couple
             if len(node_list)%2==0:
