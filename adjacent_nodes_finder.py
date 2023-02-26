@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-02-25 21:03:11
+LastEditTime: 2023-02-25 23:06:43
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -34,7 +34,7 @@ net_grammar=r"""
 
     //net_name_alias
     net_aliasing_list: net_name_alias*
-    net_name_alias: "(" component_path net_alias")"
+    net_name_alias: "(" component_path net_alias ")"
     component_path: /(\w|\/)+/
     net_alias: CNAME
 
@@ -125,34 +125,26 @@ class data_transformer(Transformer):
     def y(self, n):
         return str(n[0])
 
-def sorting(node:soc_node)->Tuple[soc_node, float, soc_node, float]:
-    
-    # TODO: 两点重复的pair要删掉，有不重复的pair就要保留
+def sorting(node:soc_node, functional_node_list:list)->Tuple[soc_node, float]:
     # finding all the node in the same layout.
     node_in_same_layout_list=[]
-    for n in node_list:
+
+    for n in functional_node_list:
         if n.layout==node.layout:
-            node_in_same_layout_list.append([n, 0]) #[another node, distance to a specified node]
-    node_in_same_layout_list.remove([node, 0]) # remove node itself
-    for node in node_in_same_layout_list:
-        print(node.layout)
+            node_in_same_layout_list.append(n) #[another node, distance to a specified node]
+    node_in_same_layout_list.remove(node) # remove node itself
 
     # calculate euclidean distances between node (wire starting point) and other nodes (starting point)
-    # TODO: 计算起始点的距离就行了
     nearest_node=node_in_same_layout_list[0]
-    second_nearest_node=nearest_node
-    distance=math.dist(node_in_same_layout_list[0].location, node.location)
-    second_distance=distance #TODO: check second nearest node calculator's logic
+    distance=math.dist([float(x) for x in nearest_node.location], [float(x) for x in node.location])
 
     for ele in node_in_same_layout_list[1:]:
-        ele[1]=math.dist(ele[0].location, node.location)
-        if ele[1]<=distance:
-            second_nearest_node=nearest_node
-            second_distance=distance
-            nearest_node=ele[0]
-            distance=ele[1]
+        cur_dis=math.dist([float(x) for x in ele.location], [float(x) for x in node.location])
+        if cur_dis<=distance:
+            nearest_node=ele
+            distance=cur_dis
 
-    return nearest_node, distance, second_nearest_node, second_distance
+    return nearest_node, distance
 
 def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[soc_node]:
     all_node={}
@@ -189,7 +181,6 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[soc_no
         else:
             node_obj=soc_node(node_name, node_info[2][0][1], node_info[2][0][2] )
         node_in_need.append(node_obj)
-
     return node_in_need
 
 def main():
@@ -212,7 +203,7 @@ def main():
                                 help="This argument indicates a 'xxx.def' file, or a text file with NETS segment.",
                                 required=True,
                                 metavar="xxx.def"
-                                )  # on/off flag
+                                )  
     param_parser.add_argument('-of','--output_file',
                                 action='store',
                                 help="this argument indicetes the output file 'xxx.map' of the program, \
@@ -227,37 +218,26 @@ def main():
 
     # node_list=file_parser("ibex_top_working.def")
     node_list=file_parser(args.file_name, args.functional_unit)
-    exit(0)
 
     # create pairs
-    with open(param_parser.output_file, "w") as output:
-        while len(node_list)>0:
-            # get net couple
-            if len(node_list)%2==0:
-                n1=random.sample(node_list, 1)
-                n2= sorting(n1)[0]
-                pair=[n1, n2]
-                node_list.remove(pair[0])
-                node_list.remove(pair[1])
-            elif len(node_list)%2==1:
-                n1=random.sample(node_list, 1)
-                n2=sorting(n1)[0]
-                n3=sorting(n1)[2]
-                pair=[n1, n2, n3]
-                node_list.remove(pair[0])
-                node_list.remove(pair[1])
-                node_list.remove(pair[2])
-            
-            # parse pair string
-            p_lst=[]
-            for p in pair:    
-                p_lst.append(p.rstrip("\n"))
-                print(p_lst)
-            
-            if len(p_lst)==2:
-                output.write("{};{}\n".format(p_lst[0], p_lst[1]))
-            elif len(p_lst)==3:
-                output.write("{};{};{}\n".format(p_lst[0], p_lst[1], p_lst[2]))
+    pair_list=[]
+    for node in node_list:         
+        # get net couple
+        n1= node
+        n2= sorting(n1, node_list)[0]
+        pair=[n1.name, n2.name]
+        # check if there are any repeated pairs in the list
+        indicator=0
+        for p in pair_list:
+            if set(pair)==set(p):
+                indicator=1
+        if len(pair_list)==0 or indicator==0:
+            pair_list.append(pair)
+    
+    # write to output file
+    with open(args.output_file, "w") as output:
+        for pair in pair_list:
+            output.write(f"{pair[0]};{pair[1]}\n")
         
 if __name__=="__main__":
     main()
