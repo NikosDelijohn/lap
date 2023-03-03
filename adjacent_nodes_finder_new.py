@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-03-03 21:54:18
+LastEditTime: 2023-03-03 22:45:44
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -259,13 +259,6 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> Any:
 
     net_parser = Lark(net_grammar, parser='lalr', start='net_list', transformer=DefNetsTransformer())
     net_data = net_parser.parse(data)
-    
-    # for net in net_data:
-    #     print("+++++++++++++++++++++++++++++++++++++++")
-    #     if (len(net.routing_elements)!=0):
-    #         print(net.routing_elements[0])
-
-    # exit(0)
 
     # extract nodes that are needed
     nets_in_need=[]
@@ -281,20 +274,25 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> Any:
 
 def sorting(net: Net, functional_node_list: List[Net])->Tuple[Net, float, str, str]:
     # finding all the node in the same layout.
-    node_in_same_layout_list=[]
+    
+    node_in_same_layer_list=[]
 
     for n in functional_node_list:
         if len(n.routing_elements)>0 and len(net.routing_elements)>0:
             if n.routing_elements[0].metal_layer==net.routing_elements[0].metal_layer:
-                node_in_same_layout_list.append(n) 
-    node_in_same_layout_list.remove(net) # remove node itself
+                node_in_same_layer_list.append(n)
+        elif len(net.routing_elements)==0:
+            return None, None, None, None
 
-    # calculate euclidean distances between node (wire starting point) and other nodes (starting point)
-    nearest_node=node_in_same_layout_list[0]
+    if net in node_in_same_layer_list:
+        node_in_same_layer_list.remove(net) # remove net itself
+
+    # calculate euclidean distances between nnet (wire starting point) and other nodes (starting point)
+    nearest_node=node_in_same_layer_list[0]
     distance=math.dist([net.routing_elements[0].starting_point.first_coordinate,net.routing_elements[0].starting_point.second_coordinate], \
                         [nearest_node.routing_elements[0].starting_point.first_coordinate,nearest_node.routing_elements[0].starting_point.second_coordinate])
 
-    for ele in node_in_same_layout_list[1:]:
+    for ele in node_in_same_layer_list[1:]:
         cur_dis=math.dist([net.routing_elements[0].starting_point.first_coordinate,net.routing_elements[0].starting_point.second_coordinate], \
                         [ele.routing_elements[0].starting_point.first_coordinate,ele.routing_elements[0].starting_point.second_coordinate])
         if cur_dis<=distance:
@@ -345,14 +343,15 @@ def main():
         # get net couple
         n1= node
         n2, distance, layer_n1, layer_n2 = sorting(n1, net_list)
-        pair=[n1.net_name, n2.net_name, distance, layer_n1, layer_n2]
-        # check if there are any repeated pairs in the list
-        indicator=0
-        for p in pair_list:
-            if set(pair)==set(p):
-                indicator=1
-        if len(pair_list)==0 or indicator==0:
-            pair_list.append(pair)
+        if n2!=None:
+            pair=[n1.net_name, n2.net_name, distance, layer_n1, layer_n2]
+            # check if there are any repeated pairs in the list
+            indicator=0
+            for p in pair_list:
+                if set(pair)==set(p):
+                    indicator=1
+            if len(pair_list)==0 or indicator==0:
+                pair_list.append(pair)
     
     # write to output file
     with open(args.output_file, "w") as output:
