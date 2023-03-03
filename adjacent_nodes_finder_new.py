@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-03-03 21:44:52
+LastEditTime: 2023-03-03 21:54:18
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -358,6 +358,7 @@ def main():
     with open(args.output_file, "w") as output:
         for pair in pair_list:
             output.write(f"{pair[0]};{pair[1]} , {pair[2]},{pair[3]},{pair[4]}\n")
+            # output.write(f"{pair[0]};{pair[1]}\n")
         
 if __name__=="__main__":
     main()
