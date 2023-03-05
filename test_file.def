@@ -1,0 +1,50 @@
+daosndioqwndqiwudiqub
+qwidn129371(*&(*))
+asodiqwnondiqod
+
+NETS 17054 ;
+- u_ibex_core/id_stage_i/decoder_i/n20
+  ( u_ibex_core/id_stage_i/decoder_i/U63 ZN )
+  ( u_ibex_core/id_stage_i/decoder_i/U62 A1 )
+  + ROUTED metal1 ( 95570 75180 ) ( * 75740 )
+    NEW metal1 ( 94050 75740 0 ) ( 95570 * )
+    NEW metal1 ( 95570 75180 ) ( 96710 * 0 )
+ ;
+- u_ibex_core/id_stage_i/decoder_i/n21
+  ( u_ibex_core/id_stage_i/decoder_i/U48 ZN )
+  ( u_ibex_core/id_stage_i/decoder_i/U45 A4 )
+  + ROUTED metal3 ( 110390 118300 ) ( 112290 * ) via2_5
+    NEW metal1 ( 109250 118300 0 ) ( 110390 * ) via1_7
+    NEW metal3 ( 110390 118300 ) via2_5
+    NEW metal2 ( 112290 118300 ) via1_7
+ ;
+- u_ibex_core/id_stage_i/decoder_i/n22
+  ( u_ibex_core/id_stage_i/decoder_i/U67 ZN )
+  ( u_ibex_core/id_stage_i/decoder_i/U66 A1 )
+  + ROUTED metal2 ( 90630 97580 ) ( 91770 * )
+    NEW metal1 ( 89490 97580 0 ) ( 90630 * ) via1_8
+    NEW metal2 ( 91770 97580 ) ( * 98140 ) via1_7
+ ;
+- u_ibex_core/id_stage_i/decoder_i/n23
+  ( u_ibex_core/id_stage_i/decoder_i/U248 A1 )
+  ( u_ibex_core/id_stage_i/decoder_i/U231 A )
+  ( u_ibex_core/id_stage_i/decoder_i/U50 ZN )
+  + ROUTED metal3 ( 87590 91700 ) ( 89110 * ) via2_5
+    NEW metal2 ( 87400 92540 ) ( 87590 * )
+    NEW metal1 ( 86450 97300 0 ) ( 87590 * ) via1_7
+    NEW metal2 ( 87400 92540 ) ( * 96460 )
+    NEW metal2 ( 87400 96460 ) ( 87590 * )
+    NEW metal2 ( 87590 91700 ) ( * 92540 )
+    NEW metal2 ( 87590 96460 ) ( * 97300 )
+    NEW metal1 ( 87970 78820 0 ) ( 89110 * ) via1_7
+    NEW metal2 ( 89110 78820 ) ( * 91700 )
+    NEW metal3 ( 89110 91700 ) ( 91770 * ) via2_5
+    NEW metal2 ( 91770 90020 ) ( * 91700 )
+    NEW metal3 ( 87590 91700 ) via2_5
+    NEW metal2 ( 91770 90020 ) via1_4
+ ;
+END NETS
+
+daosndioqwndqiwudiqub
+asodiqwnondiqod
+qwidn129371(*&(*))

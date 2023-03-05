@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-03-03 22:45:44
+LastEditTime: 2023-03-05 23:07:06
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -23,10 +23,11 @@ import argparse as ap
 functional_unit_list={"adder":"u_ibex_core/ex_block_i/alu_i/alu_32bit_adder/",
                  "lsu":"u_ibex_core/load_store_unit_i/",
                  "compressed_decoder":"u_ibex_core/if_stage_i/compressed_decoder_i/",
-                 "decoder":"u_ibex_core/id_stage_i/decoder_i/"}
+                 "decoder":"u_ibex_core/id_stage_i/decoder_i/",
+                 "all": "u_ibex_core/"}
 
 net_list=[] #contains all the node in the SoC
-#
+
 net_grammar=r"""
 
     net_list: net+
@@ -59,9 +60,9 @@ net_grammar=r"""
     %ignore WS
     """
 
-@dataclass # 创建_init_构造函数，并且将其所有的成员函数设置为类的初始化参数
+@dataclass 
 class RoutingPoint:
-    first_coordinate: Union[int, str] # 这个Union表示类型可能是int或者str
+    first_coordinate: Union[int, str]
     second_coordinate: Union[int, str]  
 
     def __repr__(self) -> str:
@@ -236,25 +237,38 @@ class DefNetsTransformer(Transformer):
         ...   NEW metal2 ( 310650 86940 ) via1_4'''
         >>> Lark(net_grammar, parser='lalr', start='element_list', transformer=DefNetsTransformer()).parse(data) # doctest +NORMALIZE_WHITESPACE
         [metal3: (x,y) = 308370 89180 -> (x,y) = 310650 89180, metal4: (x,y) = 307810 124740 -> (x,y) = 308370 124740, metal4: (x,y) = 308090 90580 -> (x,y) = 308370 90580, metal4: (x,y) = 308370 89180, metal3: (x,y) = 308370 144060, metal2: (x,y) = 310650 86940]
-        """        
+        """
         return elements
 
     net_list = list
     
 
-def file_parser(file_name:str, targeted_functional_unit:str=None) -> Any:
+def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[Net]:
+    """
+    this function accepts the .def file and targeted functional unit, and then generate a list containing
+    parameters:
+        - file_name:
+        - targeted_funtianl_unit:
+    output:
+        - nets_in_need: 
+
+    >>> file_parser("test_file.def", "decoder") # doctest: +ELLIPSIS
+    [u_ibex_core/id_stage_i/decoder_i/n20: (95570,75180,95570,75740) -> (94050,75740,95570,75740) -> (95570,75180,96710,75180), \
+u_ibex_core/id_stage_i/decoder_i/n21: (110390,118300,112290,118300) -> (109250,118300,110390,118300) -> (110390,118300) -> (112290,118300), \
+u_ibex_core/id_stage_i/decoder_i/n22: (90630,97580,91770,97580) -> (89490,97580,90630,97580) -> (91770,97580,91770,98140), \
+u_ibex_core/id_stage_i/decoder_i/n23: (87590,91700,89110,91700) -> (87400,92540,87590,92540) -> (86450,97300,87590,97300) -> (87400,92540,87400,96460) -> (87400,96460,87590,96460) -> (87590,91700,87590,92540) -> (87590,96460,87590,97300) -> (87970,78820,89110,78820) -> (89110,78820,89110,91700) -> (89110,91700,91770,91700) -> (91770,90020,91770,91700) -> (87590,91700) -> (91770,90020)]
+    """
 
     # read the file which is our target
     with open(file_name, "r") as input_file:
         data = input_file.read()
-    #net_input = data[data.find("NETS") + 13 : data.find("END NETS")]
     
     match = re.search(r'\bNETS\b\s+\d+\s*;(.*)\bEND NETS\b', data, re.DOTALL | re.MULTILINE)
     
     if not match:
         raise ValueError("Invalid input file")
 
-    print(data[:match.span(1)[0]].count('\n'))    
+    # print(data[:match.span(1)[0]].count('\n'))    
     data = match.group(1)
 
     net_parser = Lark(net_grammar, parser='lalr', start='net_list', transformer=DefNetsTransformer())
@@ -273,8 +287,39 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> Any:
     return nets_in_need
 
 def sorting(net: Net, functional_node_list: List[Net])->Tuple[Net, float, str, str]:
-    # finding all the node in the same layout.
+    """
+    this function accepts target net and a netlist to search for the nearest net in it and also return distances and their metal layer
+    parameters: 
+        - net: target net
+        - functional_node_list: nets search space
+    ouput:
+        - Net: closest net
+        - distance: starting point of distance between two nets
+        - net.routing_elements[0].metal_layer: target net's metal layer
+        - nearest_node.routing_elements[0].metal_layer: closest net's metal layer
+
+    >>> net_name1="u_ibex_core/id_stage_i/decoder_i/n1"
+    >>> routing_ports1=[]
+    >>> routing_elements1=[RoutingElement('metal1', 'via1', RoutingPoint(0, 1), RoutingPoint(1, 1)), RoutingElement('metal2', None, RoutingPoint(0, 1), RoutingPoint(0, 0))]
+    >>> net_name2="u_ibex_core/id_stage_i/decoder_i/n2"
+    >>> routing_ports2=[]
+    >>> routing_elements2=[RoutingElement('metal1', 'via2', RoutingPoint(0, 2), RoutingPoint(2, 2)), RoutingElement('metal1', None, RoutingPoint(2, 2), RoutingPoint(2, 4)), RoutingElement('metal1', None, RoutingPoint(2, 2), RoutingPoint(3, 2))]
+    >>> net_name3="u_ibex_core/id_stage_i/decoder_i/n3"
+    >>> routing_ports3=[]
+    >>> routing_elements3=[RoutingElement('metal1', 'via1', RoutingPoint(2, 1), RoutingPoint(3, 1)), RoutingElement('metal1', None, RoutingPoint(3, 1), RoutingPoint(3, 0))]
+    >>> net_name4="u_ibex_core/id_stage_i/decoder_i/n4"
+    >>> routing_ports4=[]
+    >>> routing_elements4=[RoutingElement('metal2', None, RoutingPoint(3, 2), RoutingPoint(3, 3)), RoutingElement('metal2', None, RoutingPoint(3, 3), RoutingPoint(2, 3))]
+    >>> net1=Net(net_name1, routing_ports1, routing_elements1)
+    >>> net2=Net(net_name2, routing_ports2, routing_elements2)
+    >>> net3=Net(net_name3, routing_ports3, routing_elements3)
+    >>> net4=Net(net_name4, routing_ports4, routing_elements4)
+    >>> net_lst=[net1, net2, net3, net4]
+    >>> sorting(net1, net_lst) #doctest: +ELLIPSIS
+    (u_ibex_core/id_stage_i/decoder_i/n2: (0,2,2,2) -> (2,2,2,4) -> (2,2,3,2), 1.0, 'metal1', 'metal1')
+    """
     
+    # finding all the node in the same layout.
     node_in_same_layer_list=[]
 
     for n in functional_node_list:
