@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-03-05 23:07:06
+LastEditTime: 2023-03-05 23:12:27
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -247,10 +247,10 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[Net]:
     """
     this function accepts the .def file and targeted functional unit, and then generate a list containing
     parameters:
-        - file_name:
-        - targeted_funtianl_unit:
+        - file_name: .def file or other text file
+        - targeted_funtianl_unit: set filter, just perserve functional unit which we are interested in
     output:
-        - nets_in_need: 
+        - nets_in_need: out put a net list that contains the intersted net objects
 
     >>> file_parser("test_file.def", "decoder") # doctest: +ELLIPSIS
     [u_ibex_core/id_stage_i/decoder_i/n20: (95570,75180,95570,75740) -> (94050,75740,95570,75740) -> (95570,75180,96710,75180), \
