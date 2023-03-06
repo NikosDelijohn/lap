@@ -1,296 +1,296 @@
-u_ibex_core/load_store_unit_i/handle_misaligned_q;u_ibex_core/load_store_unit_i/n234 , 3360.0,metal2,metal2
-u_ibex_core/load_store_unit_i/data_sign_ext_q;u_ibex_core/load_store_unit_i/n267 , 1805.4362353736008,metal2,metal2
-u_ibex_core/load_store_unit_i/data_we_q;u_ibex_core/load_store_unit_i/n40 , 1888.0677953929512,metal2,metal2
-u_ibex_core/load_store_unit_i/lsu_err_q;u_ibex_core/load_store_unit_i/n259 , 3284.204622126947,metal1,metal1
-u_ibex_core/load_store_unit_i/net8384;u_ibex_core/load_store_unit_i/n411 , 7225.427323003118,metal2,metal2
-u_ibex_core/load_store_unit_i/net8390;u_ibex_core/load_store_unit_i/n402 , 6307.836396102867,metal2,metal2
-u_ibex_core/load_store_unit_i/net8395;u_ibex_core/load_store_unit_i/n237 , 3091.148653817865,metal2,metal2
-u_ibex_core/load_store_unit_i/n260;u_ibex_core/load_store_unit_i/n65 , 2942.9237163066255,metal2,metal2
-u_ibex_core/load_store_unit_i/n261;u_ibex_core/load_store_unit_i/n49 , 3948.6706623875334,metal2,metal2
-u_ibex_core/load_store_unit_i/n286;u_ibex_core/load_store_unit_i/n40 , 2825.6680626004177,metal2,metal2
-u_ibex_core/load_store_unit_i/n287;u_ibex_core/load_store_unit_i/n45 , 2632.1094202179365,metal1,metal1
-u_ibex_core/load_store_unit_i/n288;u_ibex_core/load_store_unit_i/n397 , 1722.440129583609,metal3,metal3
-u_ibex_core/load_store_unit_i/n289;u_ibex_core/load_store_unit_i/n33 , 3103.353025358217,metal2,metal2
-u_ibex_core/load_store_unit_i/n290;u_ibex_core/load_store_unit_i/n288 , 3346.8791433214315,metal3,metal3
-u_ibex_core/load_store_unit_i/n300;u_ibex_core/load_store_unit_i/n414 , 4088.2759202382613,metal2,metal2
-u_ibex_core/load_store_unit_i/n13;u_ibex_core/load_store_unit_i/n127 , 2765.8633371878664,metal2,metal2
-u_ibex_core/load_store_unit_i/n24;u_ibex_core/load_store_unit_i/n257 , 5502.726596879042,metal3,metal3
-u_ibex_core/load_store_unit_i/n25;u_ibex_core/load_store_unit_i/n37 , 3610.8724707472015,metal2,metal2
-u_ibex_core/load_store_unit_i/n26;u_ibex_core/load_store_unit_i/n33 , 3103.353025358217,metal2,metal2
-u_ibex_core/load_store_unit_i/n27;u_ibex_core/load_store_unit_i/ls_fsm_cs[0] , 1920.5207627099478,metal2,metal2
-u_ibex_core/load_store_unit_i/n28;u_ibex_core/load_store_unit_i/n29 , 4940.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n30;u_ibex_core/load_store_unit_i/n46 , 3284.204622126947,metal1,metal1
-u_ibex_core/load_store_unit_i/n31;u_ibex_core/load_store_unit_i/n61 , 1598.123900077838,metal3,metal3
-u_ibex_core/load_store_unit_i/n32;u_ibex_core/load_store_unit_i/n62 , 3383.7848631377265,metal2,metal2
-u_ibex_core/load_store_unit_i/n33;u_ibex_core/load_store_unit_i/n27 , 2660.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n35;u_ibex_core/load_store_unit_i/ls_fsm_cs[2] , 7923.231663910881,metal1,metal1
-u_ibex_core/load_store_unit_i/n36;u_ibex_core/load_store_unit_i/n258 , 2548.4897488512684,metal1,metal1
-u_ibex_core/load_store_unit_i/n38;u_ibex_core/load_store_unit_i/n287 , 3080.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n39;u_ibex_core/load_store_unit_i/n57 , 1545.5743269089326,metal3,metal3
-u_ibex_core/load_store_unit_i/n41;u_ibex_core/load_store_unit_i/n56 , 1450.6550244630873,metal3,metal3
-u_ibex_core/load_store_unit_i/n42;u_ibex_core/load_store_unit_i/n68 , 22851.4244632583,metal1,metal1
-u_ibex_core/load_store_unit_i/n43;u_ibex_core/load_store_unit_i/n260 , 26293.155002775915,metal2,metal2
-u_ibex_core/load_store_unit_i/n44;u_ibex_core/load_store_unit_i/n397 , 1173.8824472663352,metal3,metal3
-u_ibex_core/load_store_unit_i/n45;u_ibex_core/load_store_unit_i/n255 , 2520.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n47;u_ibex_core/load_store_unit_i/n54 , 4742.362280551751,metal2,metal2
-u_ibex_core/load_store_unit_i/n48;u_ibex_core/load_store_unit_i/n401 , 3434.64699787329,metal3,metal3
-u_ibex_core/load_store_unit_i/n50;u_ibex_core/load_store_unit_i/n59 , 8200.390234616887,metal1,metal1
-u_ibex_core/load_store_unit_i/n51;u_ibex_core/load_store_unit_i/n52 , 2674.696244435992,metal2,metal2
-u_ibex_core/load_store_unit_i/n53;u_ibex_core/load_store_unit_i/n59 , 5928.912210515517,metal1,metal1
-u_ibex_core/load_store_unit_i/n54;u_ibex_core/load_store_unit_i/n254 , 1722.440129583609,metal2,metal2
-u_ibex_core/load_store_unit_i/n55;u_ibex_core/load_store_unit_i/n401 , 5714.857828502823,metal3,metal3
-u_ibex_core/load_store_unit_i/n58;u_ibex_core/load_store_unit_i/n59 , 2267.4214429611447,metal1,metal1
-u_ibex_core/load_store_unit_i/n60;u_ibex_core/load_store_unit_i/n401 , 3420.0,metal3,metal3
-u_ibex_core/load_store_unit_i/n63;u_ibex_core/load_store_unit_i/n255 , 3172.3808094237365,metal1,metal1
-u_ibex_core/load_store_unit_i/n64;u_ibex_core/load_store_unit_i/n159 , 21345.83800182134,metal3,metal3
-u_ibex_core/load_store_unit_i/n66;u_ibex_core/load_store_unit_i/n68 , 472.0169488482378,metal1,metal1
-u_ibex_core/load_store_unit_i/n67;u_ibex_core/load_store_unit_i/n255 , 2660.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n69;u_ibex_core/load_store_unit_i/n242 , 3398.352542041511,metal2,metal2
-u_ibex_core/load_store_unit_i/n70;u_ibex_core/load_store_unit_i/n73 , 1619.876538505327,metal2,metal2
-u_ibex_core/load_store_unit_i/n71;u_ibex_core/load_store_unit_i/n104 , 6619.365528508,metal3,metal3
-u_ibex_core/load_store_unit_i/n72;u_ibex_core/load_store_unit_i/n73 , 1843.9088914585775,metal2,metal2
-u_ibex_core/load_store_unit_i/n74;u_ibex_core/load_store_unit_i/n141 , 2240.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n75;u_ibex_core/load_store_unit_i/n186 , 9244.24145076274,metal3,metal3
-u_ibex_core/load_store_unit_i/n76;u_ibex_core/load_store_unit_i/n77 , 3381.4198201347313,metal2,metal2
-u_ibex_core/load_store_unit_i/n77;u_ibex_core/load_store_unit_i/n115 , 2297.1286424577966,metal2,metal2
-u_ibex_core/load_store_unit_i/n78;u_ibex_core/load_store_unit_i/n80 , 1619.876538505327,metal1,metal1
-u_ibex_core/load_store_unit_i/n79;u_ibex_core/load_store_unit_i/n148 , 5700.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n80;u_ibex_core/load_store_unit_i/n81 , 1416.0508465447135,metal1,metal1
-u_ibex_core/load_store_unit_i/n82;u_ibex_core/load_store_unit_i/n85 , 3196.247800155676,metal1,metal1
-u_ibex_core/load_store_unit_i/n83;u_ibex_core/load_store_unit_i/n152 , 3938.3752995366,metal3,metal3
-u_ibex_core/load_store_unit_i/n84;u_ibex_core/load_store_unit_i/n83 , 4742.362280551751,metal3,metal3
-u_ibex_core/load_store_unit_i/n85;u_ibex_core/load_store_unit_i/n151 , 1888.0677953929512,metal1,metal1
-u_ibex_core/load_store_unit_i/n86;u_ibex_core/load_store_unit_i/n206 , 2707.027890510181,metal1,metal1
-u_ibex_core/load_store_unit_i/n87;u_ibex_core/load_store_unit_i/n88 , 2365.417510715603,metal2,metal2
-u_ibex_core/load_store_unit_i/n89;u_ibex_core/load_store_unit_i/n158 , 9022.4830285238,metal3,metal3
-u_ibex_core/load_store_unit_i/n90;u_ibex_core/load_store_unit_i/n91 , 380.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n92;u_ibex_core/load_store_unit_i/n93 , 1520.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n93;u_ibex_core/load_store_unit_i/n232 , 944.0338976964756,metal2,metal2
-u_ibex_core/load_store_unit_i/n94;u_ibex_core/load_store_unit_i/n97 , 3052.8675044947495,metal2,metal2
-u_ibex_core/load_store_unit_i/n95;u_ibex_core/load_store_unit_i/n97 , 3023.177136722227,metal2,metal2
-u_ibex_core/load_store_unit_i/n96;u_ibex_core/load_store_unit_i/n97 , 2365.417510715603,metal2,metal2
-u_ibex_core/load_store_unit_i/n98;u_ibex_core/load_store_unit_i/n99 , 2825.6680626004177,metal3,metal3
-u_ibex_core/load_store_unit_i/n100;u_ibex_core/load_store_unit_i/n101 , 3185.9692402783803,metal2,metal2
-u_ibex_core/load_store_unit_i/n102;u_ibex_core/load_store_unit_i/n105 , 2297.1286424577966,metal1,metal1
-u_ibex_core/load_store_unit_i/n103;u_ibex_core/load_store_unit_i/n73 , 4508.347812669293,metal2,metal2
-u_ibex_core/load_store_unit_i/n106;u_ibex_core/load_store_unit_i/n84 , 7848.6686769158505,metal3,metal3
-u_ibex_core/load_store_unit_i/n107;u_ibex_core/load_store_unit_i/n163 , 944.0338976964756,metal2,metal2
-u_ibex_core/load_store_unit_i/n108;u_ibex_core/load_store_unit_i/n110 , 3938.3752995366,metal1,metal1
-u_ibex_core/load_store_unit_i/n109;u_ibex_core/load_store_unit_i/n183 , 2429.8148077579904,metal2,metal2
-u_ibex_core/load_store_unit_i/n111;u_ibex_core/load_store_unit_i/n109 , 2901.3100489261747,metal2,metal2
-u_ibex_core/load_store_unit_i/n112;u_ibex_core/load_store_unit_i/n192 , 2240.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n113;u_ibex_core/load_store_unit_i/n114 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n116;u_ibex_core/load_store_unit_i/n197 , 1920.5207627099478,metal1,metal1
-u_ibex_core/load_store_unit_i/n117;u_ibex_core/load_store_unit_i/n119 , 3610.8724707472015,metal2,metal2
-u_ibex_core/load_store_unit_i/n118;u_ibex_core/load_store_unit_i/n119 , 3944.616584663204,metal2,metal2
-u_ibex_core/load_store_unit_i/n120;u_ibex_core/load_store_unit_i/n123 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n121;u_ibex_core/load_store_unit_i/n122 , 1173.8824472663352,metal2,metal2
-u_ibex_core/load_store_unit_i/n124;u_ibex_core/load_store_unit_i/n161 , 3196.247800155676,metal1,metal1
-u_ibex_core/load_store_unit_i/n125;u_ibex_core/load_store_unit_i/n126 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n127;u_ibex_core/load_store_unit_i/n126 , 809.9382692526635,metal2,metal2
-u_ibex_core/load_store_unit_i/n128;u_ibex_core/load_store_unit_i/n218 , 5072.4353125495845,metal1,metal1
-u_ibex_core/load_store_unit_i/n129;u_ibex_core/load_store_unit_i/n169 , 6171.7096496837885,metal3,metal3
-u_ibex_core/load_store_unit_i/n130;u_ibex_core/load_store_unit_i/n131 , 2030.2709178826358,metal2,metal2
-u_ibex_core/load_store_unit_i/n132;u_ibex_core/load_store_unit_i/n171 , 2240.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n133;u_ibex_core/load_store_unit_i/n181 , 2832.101693089427,metal2,metal2
-u_ibex_core/load_store_unit_i/n134;u_ibex_core/load_store_unit_i/n230 , 4285.463802203911,metal3,metal3
-u_ibex_core/load_store_unit_i/n135;u_ibex_core/load_store_unit_i/n225 , 3153.9181980514336,metal2,metal2
-u_ibex_core/load_store_unit_i/n136;u_ibex_core/load_store_unit_i/n177 , 1920.5207627099478,metal1,metal1
-u_ibex_core/load_store_unit_i/n137;u_ibex_core/load_store_unit_i/n138 , 3610.8724707472015,metal2,metal2
-u_ibex_core/load_store_unit_i/n138;u_ibex_core/load_store_unit_i/n140 , 2942.9237163066255,metal2,metal2
-u_ibex_core/load_store_unit_i/n139;u_ibex_core/load_store_unit_i/n104 , 7259.889806326264,metal3,metal3
-u_ibex_core/load_store_unit_i/n142;u_ibex_core/load_store_unit_i/n143 , 1270.1181047445943,metal2,metal2
-u_ibex_core/load_store_unit_i/n143;u_ibex_core/load_store_unit_i/n144 , 1182.7087553578015,metal2,metal2
-u_ibex_core/load_store_unit_i/n145;u_ibex_core/load_store_unit_i/n142 , 1996.4969321288727,metal2,metal2
-u_ibex_core/load_store_unit_i/n146;u_ibex_core/load_store_unit_i/n147 , 2886.173937932362,metal1,metal1
-u_ibex_core/load_store_unit_i/n148;u_ibex_core/load_store_unit_i/n149 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n150;u_ibex_core/load_store_unit_i/n149 , 944.0338976964756,metal2,metal2
-u_ibex_core/load_store_unit_i/n153;u_ibex_core/load_store_unit_i/n155 , 3992.9938642577454,metal2,metal2
-u_ibex_core/load_store_unit_i/n154;u_ibex_core/load_store_unit_i/n155 , 2674.696244435992,metal2,metal2
-u_ibex_core/load_store_unit_i/n156;u_ibex_core/load_store_unit_i/n157 , 3687.817782917155,metal1,metal1
-u_ibex_core/load_store_unit_i/n158;u_ibex_core/load_store_unit_i/n159 , 3465.5446902326908,metal3,metal3
-u_ibex_core/load_store_unit_i/n160;u_ibex_core/load_store_unit_i/n241 , 3841.0415254198956,metal2,metal2
-u_ibex_core/load_store_unit_i/n162;u_ibex_core/load_store_unit_i/n211 , 2937.277651159318,metal1,metal1
-u_ibex_core/load_store_unit_i/n164;u_ibex_core/load_store_unit_i/n165 , 2674.696244435992,metal3,metal3
-u_ibex_core/load_store_unit_i/n166;u_ibex_core/load_store_unit_i/n218 , 3156.0101394006956,metal1,metal1
-u_ibex_core/load_store_unit_i/n167;u_ibex_core/load_store_unit_i/n166 , 4285.463802203911,metal1,metal1
-u_ibex_core/load_store_unit_i/n168;u_ibex_core/load_store_unit_i/n135 , 3156.0101394006956,metal2,metal2
-u_ibex_core/load_store_unit_i/n170;u_ibex_core/load_store_unit_i/n168 , 3383.7848631377265,metal2,metal2
-u_ibex_core/load_store_unit_i/n171;u_ibex_core/load_store_unit_i/n179 , 1920.5207627099478,metal1,metal1
-u_ibex_core/load_store_unit_i/n172;u_ibex_core/load_store_unit_i/n231 , 8992.174375533428,metal1,metal1
-u_ibex_core/load_store_unit_i/n173;u_ibex_core/load_store_unit_i/n175 , 4351.965073389261,metal2,metal2
-u_ibex_core/load_store_unit_i/n174;u_ibex_core/load_store_unit_i/n98 , 5651.336125200835,metal3,metal3
-u_ibex_core/load_store_unit_i/n175;u_ibex_core/load_store_unit_i/n229 , 3156.0101394006956,metal2,metal2
-u_ibex_core/load_store_unit_i/n176;u_ibex_core/load_store_unit_i/n136 , 2365.417510715603,metal1,metal1
-u_ibex_core/load_store_unit_i/n178;u_ibex_core/load_store_unit_i/n179 , 3381.4198201347313,metal1,metal1
-u_ibex_core/load_store_unit_i/n180;u_ibex_core/load_store_unit_i/n181 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n182;u_ibex_core/load_store_unit_i/n179 , 2297.1286424577966,metal1,metal1
-u_ibex_core/load_store_unit_i/n184;u_ibex_core/load_store_unit_i/n141 , 4327.5859321335265,metal1,metal1
-u_ibex_core/load_store_unit_i/n185;u_ibex_core/load_store_unit_i/n184 , 5545.628909330303,metal1,metal1
-u_ibex_core/load_store_unit_i/n186;u_ibex_core/load_store_unit_i/n189 , 944.0338976964756,metal3,metal3
-u_ibex_core/load_store_unit_i/n187;u_ibex_core/load_store_unit_i/n188 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n190;u_ibex_core/load_store_unit_i/n192 , 2280.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n191;u_ibex_core/load_store_unit_i/n148 , 3938.3752995366,metal2,metal2
-u_ibex_core/load_store_unit_i/n193;u_ibex_core/load_store_unit_i/n194 , 1722.440129583609,metal2,metal2
-u_ibex_core/load_store_unit_i/n195;u_ibex_core/load_store_unit_i/n89 , 10144.003154573642,metal3,metal3
-u_ibex_core/load_store_unit_i/n196;u_ibex_core/load_store_unit_i/n190 , 3948.6706623875334,metal1,metal1
-u_ibex_core/load_store_unit_i/n198;u_ibex_core/load_store_unit_i/n155 , 3239.753077010654,metal2,metal2
-u_ibex_core/load_store_unit_i/n199;u_ibex_core/load_store_unit_i/n116 , 3444.880259167218,metal1,metal1
-u_ibex_core/load_store_unit_i/n200;u_ibex_core/load_store_unit_i/n83 , 6946.653870749571,metal3,metal3
-u_ibex_core/load_store_unit_i/n201;u_ibex_core/load_store_unit_i/n202 , 3718.494318941472,metal2,metal2
-u_ibex_core/load_store_unit_i/n202;u_ibex_core/load_store_unit_i/n203 , 1545.5743269089326,metal2,metal2
-u_ibex_core/load_store_unit_i/n204;u_ibex_core/load_store_unit_i/n120 , 2832.101693089427,metal2,metal2
-u_ibex_core/load_store_unit_i/n205;u_ibex_core/load_store_unit_i/n121 , 4947.928859634099,metal2,metal2
-u_ibex_core/load_store_unit_i/n207;u_ibex_core/load_store_unit_i/n210 , 1920.5207627099478,metal1,metal1
-u_ibex_core/load_store_unit_i/n208;u_ibex_core/load_store_unit_i/n158 , 4760.0,metal3,metal3
-u_ibex_core/load_store_unit_i/n209;u_ibex_core/load_store_unit_i/n88 , 5808.993028055723,metal2,metal2
-u_ibex_core/load_store_unit_i/n212;u_ibex_core/load_store_unit_i/n107 , 1736.6634676873928,metal2,metal2
-u_ibex_core/load_store_unit_i/n213;u_ibex_core/load_store_unit_i/n211 , 3040.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n214;u_ibex_core/load_store_unit_i/n217 , 1920.5207627099478,metal1,metal1
-u_ibex_core/load_store_unit_i/n215;u_ibex_core/load_store_unit_i/n119 , 4568.5884034349165,metal2,metal2
-u_ibex_core/load_store_unit_i/n216;u_ibex_core/load_store_unit_i/n165 , 8658.521813797086,metal3,metal3
-u_ibex_core/load_store_unit_i/n219;u_ibex_core/load_store_unit_i/n221 , 3006.6592756745813,metal2,metal2
-u_ibex_core/load_store_unit_i/n220;u_ibex_core/load_store_unit_i/n223 , 5440.772004045014,metal3,metal3
-u_ibex_core/load_store_unit_i/n222;u_ibex_core/load_store_unit_i/n224 , 3146.1087075941923,metal1,metal1
-u_ibex_core/load_store_unit_i/n225;u_ibex_core/load_store_unit_i/n229 , 2102.189334955346,metal2,metal2
-u_ibex_core/load_store_unit_i/n226;u_ibex_core/load_store_unit_i/n98 , 4594.257284915593,metal3,metal3
-u_ibex_core/load_store_unit_i/n227;u_ibex_core/load_store_unit_i/n131 , 3006.6592756745813,metal2,metal2
-u_ibex_core/load_store_unit_i/n228;u_ibex_core/load_store_unit_i/n229 , 472.0169488482378,metal2,metal2
-u_ibex_core/load_store_unit_i/n230;u_ibex_core/load_store_unit_i/n99 , 3284.204622126947,metal3,metal3
-u_ibex_core/load_store_unit_i/n231;u_ibex_core/load_store_unit_i/n132 , 6073.285766370623,metal1,metal1
-u_ibex_core/load_store_unit_i/n233;u_ibex_core/load_store_unit_i/n244 , 6199.645151135667,metal1,metal1
-u_ibex_core/load_store_unit_i/n234;u_ibex_core/load_store_unit_i/n235 , 2265.568361361007,metal2,metal2
-u_ibex_core/load_store_unit_i/n236;u_ibex_core/load_store_unit_i/n399 , 4891.461949151807,metal1,metal1
-u_ibex_core/load_store_unit_i/n238;u_ibex_core/load_store_unit_i/n242 , 3664.150651924672,metal2,metal2
-u_ibex_core/load_store_unit_i/n239;u_ibex_core/load_store_unit_i/n181 , 2707.027890510181,metal2,metal2
-u_ibex_core/load_store_unit_i/n240;u_ibex_core/load_store_unit_i/n248 , 2886.173937932362,metal2,metal2
-u_ibex_core/load_store_unit_i/n241;u_ibex_core/load_store_unit_i/n248 , 1450.6550244630873,metal2,metal2
-u_ibex_core/load_store_unit_i/n242;u_ibex_core/load_store_unit_i/n246 , 2937.277651159318,metal2,metal2
-u_ibex_core/load_store_unit_i/n243;u_ibex_core/load_store_unit_i/n241 , 2718.3082974526637,metal2,metal2
-u_ibex_core/load_store_unit_i/n244;u_ibex_core/load_store_unit_i/n251 , 3103.353025358217,metal1,metal1
-u_ibex_core/load_store_unit_i/n245;u_ibex_core/load_store_unit_i/n246 , 760.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n247;u_ibex_core/load_store_unit_i/n251 , 4880.860579856794,metal1,metal1
-u_ibex_core/load_store_unit_i/n249;u_ibex_core/load_store_unit_i/n247 , 5192.186437330616,metal1,metal1
-u_ibex_core/load_store_unit_i/n250;u_ibex_core/load_store_unit_i/n251 , 1140.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n252;u_ibex_core/load_store_unit_i/data_we_q , 2429.8148077579904,metal2,metal2
-u_ibex_core/load_store_unit_i/n253;u_ibex_core/load_store_unit_i/n254 , 3598.7219953755807,metal2,metal2
-u_ibex_core/load_store_unit_i/n256;u_ibex_core/load_store_unit_i/n257 , 3153.9181980514336,metal3,metal3
-u_ibex_core/load_store_unit_i/n258;u_ibex_core/load_store_unit_i/n259 , 1520.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n262;u_ibex_core/load_store_unit_i/data_type_q[1] , 3156.0101394006956,metal1,metal1
-u_ibex_core/load_store_unit_i/n263;u_ibex_core/load_store_unit_i/n266 , 5802.620097852349,metal1,metal1
-u_ibex_core/load_store_unit_i/n264;u_ibex_core/load_store_unit_i/n265 , 4820.290447680512,metal2,metal2
-u_ibex_core/load_store_unit_i/n265;u_ibex_core/load_store_unit_i/n405 , 4069.6437190496176,metal2,metal2
-u_ibex_core/load_store_unit_i/n268;u_ibex_core/load_store_unit_i/rdata_offset_q[1] , 5669.567884768645,metal2,metal2
-u_ibex_core/load_store_unit_i/n269;u_ibex_core/load_store_unit_i/n383 , 3284.204622126947,metal2,metal2
-u_ibex_core/load_store_unit_i/n270;u_ibex_core/load_store_unit_i/n392 , 16066.36237609497,metal3,metal3
-u_ibex_core/load_store_unit_i/n271;u_ibex_core/load_store_unit_i/n384 , 5209.990403062178,metal1,metal1
-u_ibex_core/load_store_unit_i/n272;u_ibex_core/load_store_unit_i/n385 , 5424.131266848177,metal2,metal2
-u_ibex_core/load_store_unit_i/n273;u_ibex_core/load_store_unit_i/n370 , 2030.2709178826358,metal1,metal1
-u_ibex_core/load_store_unit_i/n274;u_ibex_core/load_store_unit_i/n318 , 6967.72559735241,metal3,metal3
-u_ibex_core/load_store_unit_i/n275;u_ibex_core/load_store_unit_i/n276 , 472.0169488482378,metal2,metal2
-u_ibex_core/load_store_unit_i/n277;u_ibex_core/load_store_unit_i/n375 , 2942.9237163066255,metal1,metal1
-u_ibex_core/load_store_unit_i/n278;u_ibex_core/load_store_unit_i/n376 , 4082.4012541640245,metal2,metal2
-u_ibex_core/load_store_unit_i/n279;u_ibex_core/load_store_unit_i/n331 , 6371.938480556761,metal1,metal1
-u_ibex_core/load_store_unit_i/n280;u_ibex_core/load_store_unit_i/n328 , 2674.696244435992,metal2,metal2
-u_ibex_core/load_store_unit_i/n281;u_ibex_core/load_store_unit_i/n408 , 4880.860579856794,metal1,metal1
-u_ibex_core/load_store_unit_i/n282;u_ibex_core/load_store_unit_i/n330 , 4408.219595256117,metal2,metal2
-u_ibex_core/load_store_unit_i/n283;u_ibex_core/load_store_unit_i/n307 , 3103.353025358217,metal1,metal1
-u_ibex_core/load_store_unit_i/n284;u_ibex_core/load_store_unit_i/n315 , 6307.836396102867,metal2,metal2
-u_ibex_core/load_store_unit_i/n285;u_ibex_core/load_store_unit_i/rdata_q[24] , 5880.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n291;u_ibex_core/load_store_unit_i/n389 , 1270.1181047445943,metal3,metal3
-u_ibex_core/load_store_unit_i/n292;u_ibex_core/load_store_unit_i/n296 , 3841.0415254198956,metal2,metal2
-u_ibex_core/load_store_unit_i/n293;u_ibex_core/load_store_unit_i/n291 , 2272.003521124032,metal3,metal3
-u_ibex_core/load_store_unit_i/n294;u_ibex_core/load_store_unit_i/rdata_q[16] , 3434.64699787329,metal1,metal1
-u_ibex_core/load_store_unit_i/n295;u_ibex_core/load_store_unit_i/n296 , 5054.305095658552,metal2,metal2
-u_ibex_core/load_store_unit_i/n297;u_ibex_core/load_store_unit_i/data_type_q[1] , 2280.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n298;u_ibex_core/load_store_unit_i/n262 , 5886.6628916560185,metal1,metal1
-u_ibex_core/load_store_unit_i/n299;u_ibex_core/load_store_unit_i/n302 , 3040.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n301;u_ibex_core/load_store_unit_i/n384 , 1900.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n303;u_ibex_core/load_store_unit_i/rdata_q[8] , 2102.189334955346,metal1,metal1
-u_ibex_core/load_store_unit_i/n304;u_ibex_core/load_store_unit_i/n306 , 3687.817782917155,metal2,metal2
-u_ibex_core/load_store_unit_i/n305;u_ibex_core/load_store_unit_i/n293 , 6478.9196630302495,metal3,metal3
-u_ibex_core/load_store_unit_i/n308;u_ibex_core/load_store_unit_i/n389 , 8434.026321988804,metal3,metal3
-u_ibex_core/load_store_unit_i/n309;u_ibex_core/load_store_unit_i/n310 , 1573.0543537970962,metal2,metal2
-u_ibex_core/load_store_unit_i/n311;u_ibex_core/load_store_unit_i/n407 , 3420.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n312;u_ibex_core/load_store_unit_i/n365 , 20727.56618612036,metal4,metal4
-u_ibex_core/load_store_unit_i/n313;u_ibex_core/load_store_unit_i/n316 , 2536.2176562747923,metal1,metal1
-u_ibex_core/load_store_unit_i/n314;u_ibex_core/load_store_unit_i/rdata_q[17] , 4106.044325138247,metal2,metal2
-u_ibex_core/load_store_unit_i/n315;u_ibex_core/load_store_unit_i/rdata_q[17] , 3810.3018253151545,metal2,metal2
-u_ibex_core/load_store_unit_i/n317;u_ibex_core/load_store_unit_i/rdata_q[30] , 4742.362280551751,metal1,metal1
-u_ibex_core/load_store_unit_i/n318;u_ibex_core/load_store_unit_i/n320 , 3548.1262660734046,metal3,metal3
-u_ibex_core/load_store_unit_i/n319;u_ibex_core/load_store_unit_i/n381 , 2674.696244435992,metal2,metal2
-u_ibex_core/load_store_unit_i/n321;u_ibex_core/load_store_unit_i/n322 , 2660.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n323;u_ibex_core/load_store_unit_i/n324 , 1173.8824472663352,metal2,metal2
-u_ibex_core/load_store_unit_i/n325;u_ibex_core/load_store_unit_i/n366 , 2832.101693089427,metal2,metal2
-u_ibex_core/load_store_unit_i/n326;u_ibex_core/load_store_unit_i/n372 , 3557.3585706251206,metal3,metal3
-u_ibex_core/load_store_unit_i/n327;u_ibex_core/load_store_unit_i/n328 , 2480.322559668399,metal2,metal2
-u_ibex_core/load_store_unit_i/n329;u_ibex_core/load_store_unit_i/n326 , 8309.60889573029,metal3,metal3
-u_ibex_core/load_store_unit_i/n331;u_ibex_core/load_store_unit_i/n408 , 3103.353025358217,metal1,metal1
-u_ibex_core/load_store_unit_i/n332;u_ibex_core/load_store_unit_i/n336 , 2548.4897488512684,metal1,metal1
-u_ibex_core/load_store_unit_i/n333;u_ibex_core/load_store_unit_i/rdata_q[11] , 3718.494318941472,metal1,metal1
-u_ibex_core/load_store_unit_i/n334;u_ibex_core/load_store_unit_i/n335 , 472.0169488482378,metal2,metal2
-u_ibex_core/load_store_unit_i/n337;u_ibex_core/load_store_unit_i/n277 , 3832.0751558391967,metal1,metal1
-u_ibex_core/load_store_unit_i/n338;u_ibex_core/load_store_unit_i/n308 , 9069.53141016668,metal3,metal3
-u_ibex_core/load_store_unit_i/n339;u_ibex_core/load_store_unit_i/n341 , 1520.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n340;u_ibex_core/load_store_unit_i/rdata_q[20] , 3103.353025358217,metal2,metal2
-u_ibex_core/load_store_unit_i/n342;u_ibex_core/load_store_unit_i/rdata_offset_q[0] , 2660.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n343;u_ibex_core/load_store_unit_i/rdata_q[28] , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n344;u_ibex_core/load_store_unit_i/n338 , 10196.313059140542,metal3,metal3
-u_ibex_core/load_store_unit_i/n345;u_ibex_core/load_store_unit_i/n343 , 1598.123900077838,metal2,metal2
-u_ibex_core/load_store_unit_i/n346;u_ibex_core/load_store_unit_i/rdata_q[28] , 1140.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n347;u_ibex_core/load_store_unit_i/n351 , 4248.15253963414,metal1,metal1
-u_ibex_core/load_store_unit_i/n348;u_ibex_core/load_store_unit_i/n386 , 1132.7841806805036,metal2,metal2
-u_ibex_core/load_store_unit_i/n349;u_ibex_core/load_store_unit_i/n360 , 1996.4969321288727,metal2,metal2
-u_ibex_core/load_store_unit_i/n350;u_ibex_core/load_store_unit_i/n379 , 3682.825002630453,metal3,metal3
-u_ibex_core/load_store_unit_i/n351;u_ibex_core/load_store_unit_i/n352 , 2280.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n353;u_ibex_core/load_store_unit_i/n355 , 1132.7841806805036,metal2,metal2
-u_ibex_core/load_store_unit_i/n354;u_ibex_core/load_store_unit_i/n379 , 4440.180176524372,metal3,metal3
-u_ibex_core/load_store_unit_i/n356;u_ibex_core/load_store_unit_i/n410 , 4180.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n357;u_ibex_core/load_store_unit_i/n358 , 2718.3082974526637,metal2,metal2
-u_ibex_core/load_store_unit_i/n359;u_ibex_core/load_store_unit_i/n413 , 3146.1087075941923,metal2,metal2
-u_ibex_core/load_store_unit_i/n361;u_ibex_core/load_store_unit_i/n411 , 2360.084744241189,metal2,metal2
-u_ibex_core/load_store_unit_i/n362;u_ibex_core/load_store_unit_i/n274 , 7253.275122315436,metal3,metal3
-u_ibex_core/load_store_unit_i/n363;u_ibex_core/load_store_unit_i/n361 , 2765.8633371878664,metal2,metal2
-u_ibex_core/load_store_unit_i/n364;u_ibex_core/load_store_unit_i/n352 , 2548.4897488512684,metal1,metal1
-u_ibex_core/load_store_unit_i/n367;u_ibex_core/load_store_unit_i/n369 , 4794.371700233514,metal2,metal2
-u_ibex_core/load_store_unit_i/n368;u_ibex_core/load_store_unit_i/n370 , 3810.3543142337826,metal1,metal1
-u_ibex_core/load_store_unit_i/n369;u_ibex_core/load_store_unit_i/n387 , 676.7569726275452,metal2,metal2
-u_ibex_core/load_store_unit_i/n371;u_ibex_core/load_store_unit_i/n389 , 6105.735008989499,metal3,metal3
-u_ibex_core/load_store_unit_i/n372;u_ibex_core/load_store_unit_i/n373 , 1968.2479518597243,metal3,metal3
-u_ibex_core/load_store_unit_i/n374;u_ibex_core/load_store_unit_i/n318 , 4071.559897631373,metal3,metal3
-u_ibex_core/load_store_unit_i/n377;u_ibex_core/load_store_unit_i/n329 , 10366.966769503992,metal3,metal3
-u_ibex_core/load_store_unit_i/n378;u_ibex_core/load_store_unit_i/n392 , 4411.076966002746,metal3,metal3
-u_ibex_core/load_store_unit_i/n380;u_ibex_core/load_store_unit_i/n394 , 1592.9846201391902,metal2,metal2
-u_ibex_core/load_store_unit_i/n381;u_ibex_core/load_store_unit_i/rdata_q[26] , 2632.1094202179365,metal2,metal2
-u_ibex_core/load_store_unit_i/n382;u_ibex_core/load_store_unit_i/n362 , 9238.874390314008,metal3,metal3
-u_ibex_core/load_store_unit_i/n385;u_ibex_core/load_store_unit_i/n391 , 4534.8428859222895,metal2,metal2
-u_ibex_core/load_store_unit_i/n388;u_ibex_core/load_store_unit_i/n325 , 3548.1262660734046,metal2,metal2
-u_ibex_core/load_store_unit_i/n390;u_ibex_core/load_store_unit_i/rdata_q[14] , 4947.928859634099,metal3,metal3
-u_ibex_core/load_store_unit_i/n391;u_ibex_core/load_store_unit_i/n380 , 2718.3082974526637,metal2,metal2
-u_ibex_core/load_store_unit_i/n393;u_ibex_core/load_store_unit_i/n394 , 3920.0,metal2,metal2
-u_ibex_core/load_store_unit_i/n395;u_ibex_core/load_store_unit_i/n45 , 2660.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n398;u_ibex_core/load_store_unit_i/n290 , 5440.772004045014,metal3,metal3
-u_ibex_core/load_store_unit_i/n402;u_ibex_core/load_store_unit_i/n404 , 3718.494318941472,metal2,metal2
-u_ibex_core/load_store_unit_i/n403;u_ibex_core/load_store_unit_i/n324 , 4594.257284915593,metal2,metal2
-u_ibex_core/load_store_unit_i/n404;u_ibex_core/load_store_unit_i/rdata_offset_q[1] , 3431.4428452183206,metal2,metal2
-u_ibex_core/load_store_unit_i/n405;u_ibex_core/load_store_unit_i/data_sign_ext_q , 1920.5207627099478,metal2,metal2
-u_ibex_core/load_store_unit_i/n406;u_ibex_core/load_store_unit_i/rdata_q[15] , 2513.404066201851,metal1,metal1
-u_ibex_core/load_store_unit_i/n407;u_ibex_core/load_store_unit_i/rdata_q[12] , 2272.003521124032,metal1,metal1
-u_ibex_core/load_store_unit_i/n409;u_ibex_core/load_store_unit_i/n339 , 1900.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n410;u_ibex_core/load_store_unit_i/rdata_q[21] , 1520.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n412;u_ibex_core/load_store_unit_i/rdata_q[18] , 2660.0,metal1,metal1
-u_ibex_core/load_store_unit_i/n414;u_ibex_core/load_store_unit_i/n252 , 2901.3100489261747,metal2,metal2
-u_ibex_core/load_store_unit_i/rdata_q[31];u_ibex_core/load_store_unit_i/n341 , 4559.649109306549,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[30];u_ibex_core/load_store_unit_i/n370 , 3860.0000000000005,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[29];u_ibex_core/load_store_unit_i/n351 , 5532.883515853194,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[27];u_ibex_core/load_store_unit_i/n335 , 4132.989232988637,metal2,metal2
-u_ibex_core/load_store_unit_i/rdata_q[25];u_ibex_core/load_store_unit_i/n316 , 3860.0000000000005,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[24];u_ibex_core/load_store_unit_i/n294 , 5424.131266848177,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[23];u_ibex_core/load_store_unit_i/rdata_q[15] , 2937.277651159318,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[22];u_ibex_core/load_store_unit_i/n273 , 4356.190996730974,metal1,metal1
-u_ibex_core/load_store_unit_i/rdata_q[19];u_ibex_core/load_store_unit_i/n334 , 10021.816202665064,metal2,metal2
-u_ibex_core/load_store_unit_i/rdata_q[13];u_ibex_core/load_store_unit_i/n359 , 3304.118641937665,metal2,metal2
-u_ibex_core/load_store_unit_i/rdata_q[10];u_ibex_core/load_store_unit_i/n373 , 9895.857719268199,metal3,metal3
-u_ibex_core/load_store_unit_i/rdata_q[9];u_ibex_core/load_store_unit_i/n305 , 7849.509538818334,metal3,metal3
-u_ibex_core/load_store_unit_i/data_type_q[0];u_ibex_core/load_store_unit_i/n406 , 3284.204622126947,metal1,metal1
-u_ibex_core/load_store_unit_i/ls_fsm_cs[2];u_ibex_core/load_store_unit_i/ls_fsm_cs[1] , 3420.0,metal1,metal1
+u_ibex_core/load_store_unit_i/handle_misaligned_q,u_ibex_core/load_store_unit_i/n234
+u_ibex_core/load_store_unit_i/data_sign_ext_q,u_ibex_core/load_store_unit_i/n267
+u_ibex_core/load_store_unit_i/data_we_q,u_ibex_core/load_store_unit_i/n40
+u_ibex_core/load_store_unit_i/lsu_err_q,u_ibex_core/load_store_unit_i/n259
+u_ibex_core/load_store_unit_i/net8384,u_ibex_core/load_store_unit_i/n411
+u_ibex_core/load_store_unit_i/net8390,u_ibex_core/load_store_unit_i/n402
+u_ibex_core/load_store_unit_i/net8395,u_ibex_core/load_store_unit_i/n237
+u_ibex_core/load_store_unit_i/n260,u_ibex_core/load_store_unit_i/n65
+u_ibex_core/load_store_unit_i/n261,u_ibex_core/load_store_unit_i/n49
+u_ibex_core/load_store_unit_i/n286,u_ibex_core/load_store_unit_i/n40
+u_ibex_core/load_store_unit_i/n287,u_ibex_core/load_store_unit_i/n45
+u_ibex_core/load_store_unit_i/n288,u_ibex_core/load_store_unit_i/n397
+u_ibex_core/load_store_unit_i/n289,u_ibex_core/load_store_unit_i/n33
+u_ibex_core/load_store_unit_i/n290,u_ibex_core/load_store_unit_i/n288
+u_ibex_core/load_store_unit_i/n300,u_ibex_core/load_store_unit_i/n414
+u_ibex_core/load_store_unit_i/n13,u_ibex_core/load_store_unit_i/n127
+u_ibex_core/load_store_unit_i/n24,u_ibex_core/load_store_unit_i/n257
+u_ibex_core/load_store_unit_i/n25,u_ibex_core/load_store_unit_i/n37
+u_ibex_core/load_store_unit_i/n26,u_ibex_core/load_store_unit_i/n33
+u_ibex_core/load_store_unit_i/n27,u_ibex_core/load_store_unit_i/ls_fsm_cs[0]
+u_ibex_core/load_store_unit_i/n28,u_ibex_core/load_store_unit_i/n29
+u_ibex_core/load_store_unit_i/n30,u_ibex_core/load_store_unit_i/n46
+u_ibex_core/load_store_unit_i/n31,u_ibex_core/load_store_unit_i/n61
+u_ibex_core/load_store_unit_i/n32,u_ibex_core/load_store_unit_i/n62
+u_ibex_core/load_store_unit_i/n33,u_ibex_core/load_store_unit_i/n27
+u_ibex_core/load_store_unit_i/n35,u_ibex_core/load_store_unit_i/ls_fsm_cs[2]
+u_ibex_core/load_store_unit_i/n36,u_ibex_core/load_store_unit_i/n258
+u_ibex_core/load_store_unit_i/n38,u_ibex_core/load_store_unit_i/n287
+u_ibex_core/load_store_unit_i/n39,u_ibex_core/load_store_unit_i/n57
+u_ibex_core/load_store_unit_i/n41,u_ibex_core/load_store_unit_i/n56
+u_ibex_core/load_store_unit_i/n42,u_ibex_core/load_store_unit_i/n68
+u_ibex_core/load_store_unit_i/n43,u_ibex_core/load_store_unit_i/n260
+u_ibex_core/load_store_unit_i/n44,u_ibex_core/load_store_unit_i/n397
+u_ibex_core/load_store_unit_i/n45,u_ibex_core/load_store_unit_i/n255
+u_ibex_core/load_store_unit_i/n47,u_ibex_core/load_store_unit_i/n54
+u_ibex_core/load_store_unit_i/n48,u_ibex_core/load_store_unit_i/n401
+u_ibex_core/load_store_unit_i/n50,u_ibex_core/load_store_unit_i/n59
+u_ibex_core/load_store_unit_i/n51,u_ibex_core/load_store_unit_i/n52
+u_ibex_core/load_store_unit_i/n53,u_ibex_core/load_store_unit_i/n59
+u_ibex_core/load_store_unit_i/n54,u_ibex_core/load_store_unit_i/n254
+u_ibex_core/load_store_unit_i/n55,u_ibex_core/load_store_unit_i/n401
+u_ibex_core/load_store_unit_i/n58,u_ibex_core/load_store_unit_i/n59
+u_ibex_core/load_store_unit_i/n60,u_ibex_core/load_store_unit_i/n401
+u_ibex_core/load_store_unit_i/n63,u_ibex_core/load_store_unit_i/n255
+u_ibex_core/load_store_unit_i/n64,u_ibex_core/load_store_unit_i/n159
+u_ibex_core/load_store_unit_i/n66,u_ibex_core/load_store_unit_i/n68
+u_ibex_core/load_store_unit_i/n67,u_ibex_core/load_store_unit_i/n66
+u_ibex_core/load_store_unit_i/n69,u_ibex_core/load_store_unit_i/n242
+u_ibex_core/load_store_unit_i/n70,u_ibex_core/load_store_unit_i/n73
+u_ibex_core/load_store_unit_i/n71,u_ibex_core/load_store_unit_i/n104
+u_ibex_core/load_store_unit_i/n72,u_ibex_core/load_store_unit_i/n73
+u_ibex_core/load_store_unit_i/n74,u_ibex_core/load_store_unit_i/n141
+u_ibex_core/load_store_unit_i/n75,u_ibex_core/load_store_unit_i/n186
+u_ibex_core/load_store_unit_i/n76,u_ibex_core/load_store_unit_i/n77
+u_ibex_core/load_store_unit_i/n77,u_ibex_core/load_store_unit_i/n115
+u_ibex_core/load_store_unit_i/n78,u_ibex_core/load_store_unit_i/n80
+u_ibex_core/load_store_unit_i/n79,u_ibex_core/load_store_unit_i/n148
+u_ibex_core/load_store_unit_i/n80,u_ibex_core/load_store_unit_i/n81
+u_ibex_core/load_store_unit_i/n82,u_ibex_core/load_store_unit_i/n85
+u_ibex_core/load_store_unit_i/n83,u_ibex_core/load_store_unit_i/n152
+u_ibex_core/load_store_unit_i/n84,u_ibex_core/load_store_unit_i/n83
+u_ibex_core/load_store_unit_i/n85,u_ibex_core/load_store_unit_i/n151
+u_ibex_core/load_store_unit_i/n86,u_ibex_core/load_store_unit_i/n206
+u_ibex_core/load_store_unit_i/n87,u_ibex_core/load_store_unit_i/n88
+u_ibex_core/load_store_unit_i/n89,u_ibex_core/load_store_unit_i/n158
+u_ibex_core/load_store_unit_i/n90,u_ibex_core/load_store_unit_i/n91
+u_ibex_core/load_store_unit_i/n92,u_ibex_core/load_store_unit_i/n93
+u_ibex_core/load_store_unit_i/n93,u_ibex_core/load_store_unit_i/n232
+u_ibex_core/load_store_unit_i/n94,u_ibex_core/load_store_unit_i/n97
+u_ibex_core/load_store_unit_i/n95,u_ibex_core/load_store_unit_i/n97
+u_ibex_core/load_store_unit_i/n96,u_ibex_core/load_store_unit_i/n97
+u_ibex_core/load_store_unit_i/n98,u_ibex_core/load_store_unit_i/n99
+u_ibex_core/load_store_unit_i/n100,u_ibex_core/load_store_unit_i/n101
+u_ibex_core/load_store_unit_i/n102,u_ibex_core/load_store_unit_i/n105
+u_ibex_core/load_store_unit_i/n103,u_ibex_core/load_store_unit_i/n73
+u_ibex_core/load_store_unit_i/n106,u_ibex_core/load_store_unit_i/n84
+u_ibex_core/load_store_unit_i/n107,u_ibex_core/load_store_unit_i/n163
+u_ibex_core/load_store_unit_i/n108,u_ibex_core/load_store_unit_i/n110
+u_ibex_core/load_store_unit_i/n109,u_ibex_core/load_store_unit_i/n183
+u_ibex_core/load_store_unit_i/n111,u_ibex_core/load_store_unit_i/n109
+u_ibex_core/load_store_unit_i/n112,u_ibex_core/load_store_unit_i/n192
+u_ibex_core/load_store_unit_i/n113,u_ibex_core/load_store_unit_i/n114
+u_ibex_core/load_store_unit_i/n116,u_ibex_core/load_store_unit_i/n197
+u_ibex_core/load_store_unit_i/n117,u_ibex_core/load_store_unit_i/n119
+u_ibex_core/load_store_unit_i/n118,u_ibex_core/load_store_unit_i/n119
+u_ibex_core/load_store_unit_i/n120,u_ibex_core/load_store_unit_i/n123
+u_ibex_core/load_store_unit_i/n121,u_ibex_core/load_store_unit_i/n122
+u_ibex_core/load_store_unit_i/n124,u_ibex_core/load_store_unit_i/n161
+u_ibex_core/load_store_unit_i/n125,u_ibex_core/load_store_unit_i/n126
+u_ibex_core/load_store_unit_i/n127,u_ibex_core/load_store_unit_i/n126
+u_ibex_core/load_store_unit_i/n128,u_ibex_core/load_store_unit_i/n218
+u_ibex_core/load_store_unit_i/n129,u_ibex_core/load_store_unit_i/n169
+u_ibex_core/load_store_unit_i/n130,u_ibex_core/load_store_unit_i/n131
+u_ibex_core/load_store_unit_i/n132,u_ibex_core/load_store_unit_i/n171
+u_ibex_core/load_store_unit_i/n133,u_ibex_core/load_store_unit_i/n181
+u_ibex_core/load_store_unit_i/n134,u_ibex_core/load_store_unit_i/n230
+u_ibex_core/load_store_unit_i/n135,u_ibex_core/load_store_unit_i/n225
+u_ibex_core/load_store_unit_i/n136,u_ibex_core/load_store_unit_i/n177
+u_ibex_core/load_store_unit_i/n137,u_ibex_core/load_store_unit_i/n138
+u_ibex_core/load_store_unit_i/n138,u_ibex_core/load_store_unit_i/n140
+u_ibex_core/load_store_unit_i/n139,u_ibex_core/load_store_unit_i/n104
+u_ibex_core/load_store_unit_i/n142,u_ibex_core/load_store_unit_i/n143
+u_ibex_core/load_store_unit_i/n143,u_ibex_core/load_store_unit_i/n144
+u_ibex_core/load_store_unit_i/n145,u_ibex_core/load_store_unit_i/n142
+u_ibex_core/load_store_unit_i/n146,u_ibex_core/load_store_unit_i/n147
+u_ibex_core/load_store_unit_i/n148,u_ibex_core/load_store_unit_i/n149
+u_ibex_core/load_store_unit_i/n150,u_ibex_core/load_store_unit_i/n149
+u_ibex_core/load_store_unit_i/n153,u_ibex_core/load_store_unit_i/n155
+u_ibex_core/load_store_unit_i/n154,u_ibex_core/load_store_unit_i/n155
+u_ibex_core/load_store_unit_i/n156,u_ibex_core/load_store_unit_i/n157
+u_ibex_core/load_store_unit_i/n158,u_ibex_core/load_store_unit_i/n159
+u_ibex_core/load_store_unit_i/n160,u_ibex_core/load_store_unit_i/n241
+u_ibex_core/load_store_unit_i/n162,u_ibex_core/load_store_unit_i/n211
+u_ibex_core/load_store_unit_i/n164,u_ibex_core/load_store_unit_i/n165
+u_ibex_core/load_store_unit_i/n166,u_ibex_core/load_store_unit_i/n218
+u_ibex_core/load_store_unit_i/n167,u_ibex_core/load_store_unit_i/n166
+u_ibex_core/load_store_unit_i/n168,u_ibex_core/load_store_unit_i/n135
+u_ibex_core/load_store_unit_i/n170,u_ibex_core/load_store_unit_i/n168
+u_ibex_core/load_store_unit_i/n171,u_ibex_core/load_store_unit_i/n179
+u_ibex_core/load_store_unit_i/n172,u_ibex_core/load_store_unit_i/n231
+u_ibex_core/load_store_unit_i/n173,u_ibex_core/load_store_unit_i/n175
+u_ibex_core/load_store_unit_i/n174,u_ibex_core/load_store_unit_i/n98
+u_ibex_core/load_store_unit_i/n175,u_ibex_core/load_store_unit_i/n229
+u_ibex_core/load_store_unit_i/n176,u_ibex_core/load_store_unit_i/n136
+u_ibex_core/load_store_unit_i/n178,u_ibex_core/load_store_unit_i/n179
+u_ibex_core/load_store_unit_i/n180,u_ibex_core/load_store_unit_i/n181
+u_ibex_core/load_store_unit_i/n182,u_ibex_core/load_store_unit_i/n179
+u_ibex_core/load_store_unit_i/n184,u_ibex_core/load_store_unit_i/n141
+u_ibex_core/load_store_unit_i/n185,u_ibex_core/load_store_unit_i/n184
+u_ibex_core/load_store_unit_i/n186,u_ibex_core/load_store_unit_i/n189
+u_ibex_core/load_store_unit_i/n187,u_ibex_core/load_store_unit_i/n188
+u_ibex_core/load_store_unit_i/n190,u_ibex_core/load_store_unit_i/n192
+u_ibex_core/load_store_unit_i/n191,u_ibex_core/load_store_unit_i/n148
+u_ibex_core/load_store_unit_i/n193,u_ibex_core/load_store_unit_i/n194
+u_ibex_core/load_store_unit_i/n195,u_ibex_core/load_store_unit_i/n89
+u_ibex_core/load_store_unit_i/n196,u_ibex_core/load_store_unit_i/n190
+u_ibex_core/load_store_unit_i/n198,u_ibex_core/load_store_unit_i/n155
+u_ibex_core/load_store_unit_i/n199,u_ibex_core/load_store_unit_i/n116
+u_ibex_core/load_store_unit_i/n200,u_ibex_core/load_store_unit_i/n83
+u_ibex_core/load_store_unit_i/n201,u_ibex_core/load_store_unit_i/n202
+u_ibex_core/load_store_unit_i/n202,u_ibex_core/load_store_unit_i/n203
+u_ibex_core/load_store_unit_i/n204,u_ibex_core/load_store_unit_i/n120
+u_ibex_core/load_store_unit_i/n205,u_ibex_core/load_store_unit_i/n121
+u_ibex_core/load_store_unit_i/n207,u_ibex_core/load_store_unit_i/n210
+u_ibex_core/load_store_unit_i/n208,u_ibex_core/load_store_unit_i/n158
+u_ibex_core/load_store_unit_i/n209,u_ibex_core/load_store_unit_i/n88
+u_ibex_core/load_store_unit_i/n212,u_ibex_core/load_store_unit_i/n107
+u_ibex_core/load_store_unit_i/n213,u_ibex_core/load_store_unit_i/n211
+u_ibex_core/load_store_unit_i/n214,u_ibex_core/load_store_unit_i/n217
+u_ibex_core/load_store_unit_i/n215,u_ibex_core/load_store_unit_i/n119
+u_ibex_core/load_store_unit_i/n216,u_ibex_core/load_store_unit_i/n165
+u_ibex_core/load_store_unit_i/n219,u_ibex_core/load_store_unit_i/n221
+u_ibex_core/load_store_unit_i/n220,u_ibex_core/load_store_unit_i/n223
+u_ibex_core/load_store_unit_i/n222,u_ibex_core/load_store_unit_i/n224
+u_ibex_core/load_store_unit_i/n225,u_ibex_core/load_store_unit_i/n229
+u_ibex_core/load_store_unit_i/n226,u_ibex_core/load_store_unit_i/n98
+u_ibex_core/load_store_unit_i/n227,u_ibex_core/load_store_unit_i/n131
+u_ibex_core/load_store_unit_i/n228,u_ibex_core/load_store_unit_i/n229
+u_ibex_core/load_store_unit_i/n230,u_ibex_core/load_store_unit_i/n99
+u_ibex_core/load_store_unit_i/n231,u_ibex_core/load_store_unit_i/n132
+u_ibex_core/load_store_unit_i/n233,u_ibex_core/load_store_unit_i/n244
+u_ibex_core/load_store_unit_i/n234,u_ibex_core/load_store_unit_i/n235
+u_ibex_core/load_store_unit_i/n236,u_ibex_core/load_store_unit_i/n399
+u_ibex_core/load_store_unit_i/n238,u_ibex_core/load_store_unit_i/n242
+u_ibex_core/load_store_unit_i/n239,u_ibex_core/load_store_unit_i/n181
+u_ibex_core/load_store_unit_i/n240,u_ibex_core/load_store_unit_i/n248
+u_ibex_core/load_store_unit_i/n241,u_ibex_core/load_store_unit_i/n248
+u_ibex_core/load_store_unit_i/n242,u_ibex_core/load_store_unit_i/n246
+u_ibex_core/load_store_unit_i/n243,u_ibex_core/load_store_unit_i/n241
+u_ibex_core/load_store_unit_i/n244,u_ibex_core/load_store_unit_i/n251
+u_ibex_core/load_store_unit_i/n245,u_ibex_core/load_store_unit_i/n246
+u_ibex_core/load_store_unit_i/n247,u_ibex_core/load_store_unit_i/n251
+u_ibex_core/load_store_unit_i/n249,u_ibex_core/load_store_unit_i/n247
+u_ibex_core/load_store_unit_i/n250,u_ibex_core/load_store_unit_i/n251
+u_ibex_core/load_store_unit_i/n252,u_ibex_core/load_store_unit_i/data_we_q
+u_ibex_core/load_store_unit_i/n253,u_ibex_core/load_store_unit_i/n254
+u_ibex_core/load_store_unit_i/n256,u_ibex_core/load_store_unit_i/n257
+u_ibex_core/load_store_unit_i/n258,u_ibex_core/load_store_unit_i/n259
+u_ibex_core/load_store_unit_i/n262,u_ibex_core/load_store_unit_i/data_type_q[1]
+u_ibex_core/load_store_unit_i/n263,u_ibex_core/load_store_unit_i/n266
+u_ibex_core/load_store_unit_i/n264,u_ibex_core/load_store_unit_i/n265
+u_ibex_core/load_store_unit_i/n265,u_ibex_core/load_store_unit_i/n405
+u_ibex_core/load_store_unit_i/n268,u_ibex_core/load_store_unit_i/rdata_offset_q[1]
+u_ibex_core/load_store_unit_i/n269,u_ibex_core/load_store_unit_i/n383
+u_ibex_core/load_store_unit_i/n270,u_ibex_core/load_store_unit_i/n392
+u_ibex_core/load_store_unit_i/n271,u_ibex_core/load_store_unit_i/n384
+u_ibex_core/load_store_unit_i/n272,u_ibex_core/load_store_unit_i/n385
+u_ibex_core/load_store_unit_i/n273,u_ibex_core/load_store_unit_i/n370
+u_ibex_core/load_store_unit_i/n274,u_ibex_core/load_store_unit_i/n318
+u_ibex_core/load_store_unit_i/n275,u_ibex_core/load_store_unit_i/n276
+u_ibex_core/load_store_unit_i/n277,u_ibex_core/load_store_unit_i/n375
+u_ibex_core/load_store_unit_i/n278,u_ibex_core/load_store_unit_i/n376
+u_ibex_core/load_store_unit_i/n279,u_ibex_core/load_store_unit_i/n331
+u_ibex_core/load_store_unit_i/n280,u_ibex_core/load_store_unit_i/n328
+u_ibex_core/load_store_unit_i/n281,u_ibex_core/load_store_unit_i/n408
+u_ibex_core/load_store_unit_i/n282,u_ibex_core/load_store_unit_i/n330
+u_ibex_core/load_store_unit_i/n283,u_ibex_core/load_store_unit_i/n307
+u_ibex_core/load_store_unit_i/n284,u_ibex_core/load_store_unit_i/n315
+u_ibex_core/load_store_unit_i/n285,u_ibex_core/load_store_unit_i/rdata_q[24]
+u_ibex_core/load_store_unit_i/n291,u_ibex_core/load_store_unit_i/n389
+u_ibex_core/load_store_unit_i/n292,u_ibex_core/load_store_unit_i/n296
+u_ibex_core/load_store_unit_i/n293,u_ibex_core/load_store_unit_i/n291
+u_ibex_core/load_store_unit_i/n294,u_ibex_core/load_store_unit_i/rdata_q[16]
+u_ibex_core/load_store_unit_i/n295,u_ibex_core/load_store_unit_i/n296
+u_ibex_core/load_store_unit_i/n297,u_ibex_core/load_store_unit_i/data_type_q[1]
+u_ibex_core/load_store_unit_i/n298,u_ibex_core/load_store_unit_i/n262
+u_ibex_core/load_store_unit_i/n299,u_ibex_core/load_store_unit_i/n302
+u_ibex_core/load_store_unit_i/n301,u_ibex_core/load_store_unit_i/n384
+u_ibex_core/load_store_unit_i/n303,u_ibex_core/load_store_unit_i/rdata_q[8]
+u_ibex_core/load_store_unit_i/n304,u_ibex_core/load_store_unit_i/n306
+u_ibex_core/load_store_unit_i/n305,u_ibex_core/load_store_unit_i/n293
+u_ibex_core/load_store_unit_i/n308,u_ibex_core/load_store_unit_i/n389
+u_ibex_core/load_store_unit_i/n309,u_ibex_core/load_store_unit_i/n310
+u_ibex_core/load_store_unit_i/n311,u_ibex_core/load_store_unit_i/n407
+u_ibex_core/load_store_unit_i/n312,u_ibex_core/load_store_unit_i/n365
+u_ibex_core/load_store_unit_i/n313,u_ibex_core/load_store_unit_i/n316
+u_ibex_core/load_store_unit_i/n314,u_ibex_core/load_store_unit_i/rdata_q[17]
+u_ibex_core/load_store_unit_i/n315,u_ibex_core/load_store_unit_i/rdata_q[17]
+u_ibex_core/load_store_unit_i/n317,u_ibex_core/load_store_unit_i/rdata_q[30]
+u_ibex_core/load_store_unit_i/n318,u_ibex_core/load_store_unit_i/n320
+u_ibex_core/load_store_unit_i/n319,u_ibex_core/load_store_unit_i/n381
+u_ibex_core/load_store_unit_i/n321,u_ibex_core/load_store_unit_i/n322
+u_ibex_core/load_store_unit_i/n323,u_ibex_core/load_store_unit_i/n324
+u_ibex_core/load_store_unit_i/n325,u_ibex_core/load_store_unit_i/n366
+u_ibex_core/load_store_unit_i/n326,u_ibex_core/load_store_unit_i/n372
+u_ibex_core/load_store_unit_i/n327,u_ibex_core/load_store_unit_i/n328
+u_ibex_core/load_store_unit_i/n329,u_ibex_core/load_store_unit_i/n326
+u_ibex_core/load_store_unit_i/n331,u_ibex_core/load_store_unit_i/n408
+u_ibex_core/load_store_unit_i/n332,u_ibex_core/load_store_unit_i/n336
+u_ibex_core/load_store_unit_i/n333,u_ibex_core/load_store_unit_i/rdata_q[11]
+u_ibex_core/load_store_unit_i/n334,u_ibex_core/load_store_unit_i/n335
+u_ibex_core/load_store_unit_i/n337,u_ibex_core/load_store_unit_i/n277
+u_ibex_core/load_store_unit_i/n338,u_ibex_core/load_store_unit_i/n308
+u_ibex_core/load_store_unit_i/n339,u_ibex_core/load_store_unit_i/n341
+u_ibex_core/load_store_unit_i/n340,u_ibex_core/load_store_unit_i/rdata_q[20]
+u_ibex_core/load_store_unit_i/n342,u_ibex_core/load_store_unit_i/rdata_offset_q[0]
+u_ibex_core/load_store_unit_i/n343,u_ibex_core/load_store_unit_i/rdata_q[28]
+u_ibex_core/load_store_unit_i/n344,u_ibex_core/load_store_unit_i/n338
+u_ibex_core/load_store_unit_i/n345,u_ibex_core/load_store_unit_i/n343
+u_ibex_core/load_store_unit_i/n346,u_ibex_core/load_store_unit_i/rdata_q[28]
+u_ibex_core/load_store_unit_i/n347,u_ibex_core/load_store_unit_i/n351
+u_ibex_core/load_store_unit_i/n348,u_ibex_core/load_store_unit_i/n386
+u_ibex_core/load_store_unit_i/n349,u_ibex_core/load_store_unit_i/n360
+u_ibex_core/load_store_unit_i/n350,u_ibex_core/load_store_unit_i/n379
+u_ibex_core/load_store_unit_i/n351,u_ibex_core/load_store_unit_i/n352
+u_ibex_core/load_store_unit_i/n353,u_ibex_core/load_store_unit_i/n355
+u_ibex_core/load_store_unit_i/n354,u_ibex_core/load_store_unit_i/n379
+u_ibex_core/load_store_unit_i/n356,u_ibex_core/load_store_unit_i/n410
+u_ibex_core/load_store_unit_i/n357,u_ibex_core/load_store_unit_i/n358
+u_ibex_core/load_store_unit_i/n359,u_ibex_core/load_store_unit_i/n413
+u_ibex_core/load_store_unit_i/n361,u_ibex_core/load_store_unit_i/n411
+u_ibex_core/load_store_unit_i/n362,u_ibex_core/load_store_unit_i/n274
+u_ibex_core/load_store_unit_i/n363,u_ibex_core/load_store_unit_i/n361
+u_ibex_core/load_store_unit_i/n364,u_ibex_core/load_store_unit_i/n352
+u_ibex_core/load_store_unit_i/n367,u_ibex_core/load_store_unit_i/n369
+u_ibex_core/load_store_unit_i/n368,u_ibex_core/load_store_unit_i/n370
+u_ibex_core/load_store_unit_i/n369,u_ibex_core/load_store_unit_i/n387
+u_ibex_core/load_store_unit_i/n371,u_ibex_core/load_store_unit_i/n389
+u_ibex_core/load_store_unit_i/n372,u_ibex_core/load_store_unit_i/n373
+u_ibex_core/load_store_unit_i/n374,u_ibex_core/load_store_unit_i/n318
+u_ibex_core/load_store_unit_i/n377,u_ibex_core/load_store_unit_i/n329
+u_ibex_core/load_store_unit_i/n378,u_ibex_core/load_store_unit_i/n392
+u_ibex_core/load_store_unit_i/n380,u_ibex_core/load_store_unit_i/n394
+u_ibex_core/load_store_unit_i/n381,u_ibex_core/load_store_unit_i/rdata_q[26]
+u_ibex_core/load_store_unit_i/n382,u_ibex_core/load_store_unit_i/n362
+u_ibex_core/load_store_unit_i/n385,u_ibex_core/load_store_unit_i/n391
+u_ibex_core/load_store_unit_i/n388,u_ibex_core/load_store_unit_i/n325
+u_ibex_core/load_store_unit_i/n390,u_ibex_core/load_store_unit_i/rdata_q[14]
+u_ibex_core/load_store_unit_i/n391,u_ibex_core/load_store_unit_i/n380
+u_ibex_core/load_store_unit_i/n393,u_ibex_core/load_store_unit_i/n394
+u_ibex_core/load_store_unit_i/n395,u_ibex_core/load_store_unit_i/n45
+u_ibex_core/load_store_unit_i/n398,u_ibex_core/load_store_unit_i/n290
+u_ibex_core/load_store_unit_i/n402,u_ibex_core/load_store_unit_i/n404
+u_ibex_core/load_store_unit_i/n403,u_ibex_core/load_store_unit_i/n324
+u_ibex_core/load_store_unit_i/n404,u_ibex_core/load_store_unit_i/rdata_offset_q[1]
+u_ibex_core/load_store_unit_i/n405,u_ibex_core/load_store_unit_i/data_sign_ext_q
+u_ibex_core/load_store_unit_i/n406,u_ibex_core/load_store_unit_i/rdata_q[15]
+u_ibex_core/load_store_unit_i/n407,u_ibex_core/load_store_unit_i/rdata_q[12]
+u_ibex_core/load_store_unit_i/n409,u_ibex_core/load_store_unit_i/n339
+u_ibex_core/load_store_unit_i/n410,u_ibex_core/load_store_unit_i/rdata_q[21]
+u_ibex_core/load_store_unit_i/n412,u_ibex_core/load_store_unit_i/rdata_q[18]
+u_ibex_core/load_store_unit_i/n414,u_ibex_core/load_store_unit_i/n252
+u_ibex_core/load_store_unit_i/rdata_q[31],u_ibex_core/load_store_unit_i/n341
+u_ibex_core/load_store_unit_i/rdata_q[30],u_ibex_core/load_store_unit_i/n370
+u_ibex_core/load_store_unit_i/rdata_q[29],u_ibex_core/load_store_unit_i/n351
+u_ibex_core/load_store_unit_i/rdata_q[27],u_ibex_core/load_store_unit_i/n335
+u_ibex_core/load_store_unit_i/rdata_q[25],u_ibex_core/load_store_unit_i/n316
+u_ibex_core/load_store_unit_i/rdata_q[24],u_ibex_core/load_store_unit_i/n294
+u_ibex_core/load_store_unit_i/rdata_q[23],u_ibex_core/load_store_unit_i/rdata_q[15]
+u_ibex_core/load_store_unit_i/rdata_q[22],u_ibex_core/load_store_unit_i/n273
+u_ibex_core/load_store_unit_i/rdata_q[19],u_ibex_core/load_store_unit_i/n334
+u_ibex_core/load_store_unit_i/rdata_q[13],u_ibex_core/load_store_unit_i/n359
+u_ibex_core/load_store_unit_i/rdata_q[10],u_ibex_core/load_store_unit_i/n373
+u_ibex_core/load_store_unit_i/rdata_q[9],u_ibex_core/load_store_unit_i/n305
+u_ibex_core/load_store_unit_i/data_type_q[0],u_ibex_core/load_store_unit_i/n406
+u_ibex_core/load_store_unit_i/ls_fsm_cs[2],u_ibex_core/load_store_unit_i/ls_fsm_cs[1]

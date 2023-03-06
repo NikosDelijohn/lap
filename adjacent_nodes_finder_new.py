@@ -4,7 +4,7 @@
 @ Author: ZhouCH
 @ Date: Do not edit
 LastEditors: Please set LastEditors
-LastEditTime: 2023-03-05 23:12:27
+LastEditTime: 2023-03-06 12:16:59
 @ FilePath: Do not edit
 @ Description: 
 @ License: MIT
@@ -276,27 +276,25 @@ u_ibex_core/id_stage_i/decoder_i/n23: (87590,91700,89110,91700) -> (87400,92540,
 
     # extract nodes that are needed
     nets_in_need=[]
-    if targeted_functional_unit!=None and targeted_functional_unit in functional_unit_list.keys():
+    if targeted_functional_unit in functional_unit_list.keys():
         for net in net_data:
             if functional_unit_list[targeted_functional_unit] in net.net_name:
                 nets_in_need.append(net)
     else:
-        print("\033[31m[warning]\033[0m you didn't specify any available functional unit!")
-        nets_in_need=net_data
+        # FIXME: to be extended
+        exit("unsupported functional unit!")
 
     return nets_in_need
 
-def sorting(net: Net, functional_node_list: List[Net])->Tuple[Net, float, str, str]:
+def find_nearest_neighbour_for_net(net: Net, functional_node_list: List[Net]) -> Tuple[Net, str]:
     """
     this function accepts target net and a netlist to search for the nearest net in it and also return distances and their metal layer
     parameters: 
         - net: target net
         - functional_node_list: nets search space
     ouput:
-        - Net: closest net
-        - distance: starting point of distance between two nets
-        - net.routing_elements[0].metal_layer: target net's metal layer
-        - nearest_node.routing_elements[0].metal_layer: closest net's metal layer
+        - net: closest net.
+        - metal_layer: the metal layer of target net and its closest net.
 
     >>> net_name1="u_ibex_core/id_stage_i/decoder_i/n1"
     >>> routing_ports1=[]
@@ -315,36 +313,26 @@ def sorting(net: Net, functional_node_list: List[Net])->Tuple[Net, float, str, s
     >>> net3=Net(net_name3, routing_ports3, routing_elements3)
     >>> net4=Net(net_name4, routing_ports4, routing_elements4)
     >>> net_lst=[net1, net2, net3, net4]
-    >>> sorting(net1, net_lst) #doctest: +ELLIPSIS
-    (u_ibex_core/id_stage_i/decoder_i/n2: (0,2,2,2) -> (2,2,2,4) -> (2,2,3,2), 1.0, 'metal1', 'metal1')
+    >>> find_nearest_neighbour_for_net(net1, net_lst)
+    u_ibex_core/id_stage_i/decoder_i/n2: (0,2,2,2) -> (2,2,2,4) -> (2,2,3,2)
     """
-    
-    # finding all the node in the same layout.
     node_in_same_layer_list=[]
 
     for n in functional_node_list:
-        if len(n.routing_elements)>0 and len(net.routing_elements)>0:
-            if n.routing_elements[0].metal_layer==net.routing_elements[0].metal_layer:
-                node_in_same_layer_list.append(n)
-        elif len(net.routing_elements)==0:
-            return None, None, None, None
+        if n.routing_elements[0].metal_layer == net.routing_elements[0].metal_layer \
+            and functional_node_list.index(n) != functional_node_list.index(net):
+            node_in_same_layer_list.append(n)
 
-    if net in node_in_same_layer_list:
-        node_in_same_layer_list.remove(net) # remove net itself
+    starting_point_distance_from_net = lambda other_net: math.dist(
+        [net.routing_elements[0].starting_point.first_coordinate, \
+        net.routing_elements[0].starting_point.second_coordinate], \
+        [other_net.routing_elements[0].starting_point.first_coordinate, \
+        other_net.routing_elements[0].starting_point.second_coordinate])
 
-    # calculate euclidean distances between nnet (wire starting point) and other nodes (starting point)
-    nearest_node=node_in_same_layer_list[0]
-    distance=math.dist([net.routing_elements[0].starting_point.first_coordinate,net.routing_elements[0].starting_point.second_coordinate], \
-                        [nearest_node.routing_elements[0].starting_point.first_coordinate,nearest_node.routing_elements[0].starting_point.second_coordinate])
+    nearest_node = min(node_in_same_layer_list, key = starting_point_distance_from_net)
 
-    for ele in node_in_same_layer_list[1:]:
-        cur_dis=math.dist([net.routing_elements[0].starting_point.first_coordinate,net.routing_elements[0].starting_point.second_coordinate], \
-                        [ele.routing_elements[0].starting_point.first_coordinate,ele.routing_elements[0].starting_point.second_coordinate])
-        if cur_dis<=distance:
-            nearest_node=ele
-            distance=cur_dis
-
-    return nearest_node, distance, net.routing_elements[0].metal_layer, nearest_node.routing_elements[0].metal_layer
+    assert nearest_node.routing_elements[0].metal_layer == net.routing_elements[0].metal_layer, "2 nets are different on metal layer!"
+    return nearest_node, nearest_node.routing_elements[0].metal_layer
 
 def main():
     param_parser=ap.ArgumentParser(
@@ -354,20 +342,20 @@ def main():
         epilog=None
     )
 
-    param_parser.add_argument("-fu","--functional_unit",
+    param_parser.add_argument("-u","--functional_unit",
                                 action="store",
                                 choices=["adder", "decoder", "compressed_decoder", "lsu"],
                                 help="This argument specifies the targeted functional unit, \
                                     if 'None' is the param, the program will add all the nodes of the processor.",
-                                required=False
+                                required=True
                                 )
-    param_parser.add_argument('-f', "--file_name",
+    param_parser.add_argument('-f', "--def_file_name",
                                 action='store',
                                 help="This argument indicates a 'xxx.def' file, or a text file with NETS segment.",
                                 required=True,
                                 metavar="xxx.def"
                                 )  
-    param_parser.add_argument('-of','--output_file',
+    param_parser.add_argument('-o','--output_file',
                                 action='store',
                                 help="this argument indicetes the output file 'xxx.map' of the program, \
                                 default value is 'pair.map'",
@@ -379,30 +367,25 @@ def main():
     print("##  \033[33mPROGRAM START\033[0m:   ##")
     print("#######################")
 
-    # net_list=file_parser("ibex_top_working.def")
-    net_list=file_parser(args.file_name, args.functional_unit)
+    net_list = file_parser(args.def_file_name, args.functional_unit)
+    
+    # filter unrouted nets
+    net_list = list(filter(lambda net : len(net.routing_elements) > 0, net_list))
 
     # create pairs
-    pair_list=[]
-    for node in net_list:         
+    pair_list = []
+    for net in net_list:         
         # get net couple
-        n1= node
-        n2, distance, layer_n1, layer_n2 = sorting(n1, net_list)
-        if n2!=None:
-            pair=[n1.net_name, n2.net_name, distance, layer_n1, layer_n2]
-            # check if there are any repeated pairs in the list
-            indicator=0
-            for p in pair_list:
-                if set(pair)==set(p):
-                    indicator=1
-            if len(pair_list)==0 or indicator==0:
-                pair_list.append(pair)
-    
+        closest_net, metal_layer = find_nearest_neighbour_for_net(net, net_list)
+        pair = f"{net.net_name},{closest_net.net_name}"
+        if ','.join(pair.split(',')[::-1]) in pair_list: 
+            continue
+        pair_list.append(pair)
+
     # write to output file
     with open(args.output_file, "w") as output:
         for pair in pair_list:
-            output.write(f"{pair[0]};{pair[1]} , {pair[2]},{pair[3]},{pair[4]}\n")
-            # output.write(f"{pair[0]};{pair[1]}\n")
+            output.write(f"{pair}\n")
         
 if __name__=="__main__":
     main()
