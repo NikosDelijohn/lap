@@ -1,0 +1,4 @@
+"u_ibex_core/ex_block_i/alu_i/alu_32bit_adder/n"
+"u_ibex_core/load_store_unit_i/n"
+"u_ibex_core/if_stage_i/compressed_decoder_i/n"
+"u_ibex_core/id_stage_i/decoder_i/n"

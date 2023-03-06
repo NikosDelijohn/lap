@@ -1,34 +1,15 @@
-# coding=utf-8
-
-'''
-@ Author: ZhouCH
-@ Date: Do not edit
-LastEditors: Please set LastEditors
-LastEditTime: 2023-03-06 12:16:59
-@ FilePath: Do not edit
-@ Description: 
-@ License: MIT
-'''
+#!/usr/bin/python3 
 
 from lark import Lark, Transformer, v_args
 from dataclasses import dataclass
-from copy import copy, deepcopy
+from copy import copy
 import math
 from typing import List, Dict, Tuple, Any, Union
-import random
-import sys
+
 import re 
-import argparse as ap
+import argparse
 
-functional_unit_list={"adder":"u_ibex_core/ex_block_i/alu_i/alu_32bit_adder/",
-                 "lsu":"u_ibex_core/load_store_unit_i/",
-                 "compressed_decoder":"u_ibex_core/if_stage_i/compressed_decoder_i/",
-                 "decoder":"u_ibex_core/id_stage_i/decoder_i/",
-                 "all": "u_ibex_core/"}
-
-net_list=[] #contains all the node in the SoC
-
-net_grammar=r"""
+DEF_NET_GRAMMAR = r"""
 
     net_list: net+
 
@@ -132,20 +113,19 @@ class Net:
             
         return f"{self.net_name}: {' -> '.join([_compact_routing_element(x) for x in self.routing_elements])}"
   
-
 class DefNetsTransformer(Transformer):
     
     @v_args(inline=True) #
     def routing_point(self, first_coordinate: str, second_coordinate: str, extension: str = None) -> Any: 
         """
         >>> data = "( 37050 359660 2 )"
-        >>> Lark(net_grammar, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
         (x,y) = 37050 359660
         >>> data = "( 37050 * 2 )"
-        >>> Lark(net_grammar, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
         (x,y) = 37050 *
         >>> data = "( 37050 23245 )"
-        >>> Lark(net_grammar, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='routing_point', transformer=DefNetsTransformer()).parse(data)
         (x,y) = 37050 23245
         """
         return RoutingPoint(int(first_coordinate) if first_coordinate != '*' else '*',
@@ -155,7 +135,7 @@ class DefNetsTransformer(Transformer):
     def routing_element(self, keyword:str, metal_layer: str, starting_point:RoutingPoint, ending_point: RoutingPoint = None, via: str = None ) -> RoutingElement:
         """
         >>> data = "ROUTED metal2 ( 37050 359660 ) ( * 361340 ) via1_4"
-        >>> Lark(net_grammar, parser='lalr', start='routing_element', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='routing_element', transformer=DefNetsTransformer()).parse(data)
         metal2: (x,y) = 37050 359660 -> (x,y) = 37050 361340
         """
         if isinstance(ending_point, str):    
@@ -166,7 +146,7 @@ class DefNetsTransformer(Transformer):
     def regular_wiring_statement(self, list_of_routes: List[RoutingElement]) -> List[RoutingElement]: 
         """
         >>> data = "+ ROUTED metal2 ( 37050 359660 ) ( * 361340 ) via1_4 NEW metal4 ( 261890 56420 ) ( 262450 * );"
-        >>> Lark(net_grammar, parser='lalr', start='regular_wiring_statement', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='regular_wiring_statement', transformer=DefNetsTransformer()).parse(data)
         [metal2: (x,y) = 37050 359660 -> (x,y) = 37050 361340, metal4: (x,y) = 261890 56420 -> (x,y) = 262450 56420]
         """
         return list_of_routes
@@ -174,10 +154,10 @@ class DefNetsTransformer(Transformer):
     def pin_or_port(self, port: Port) -> Port: 
         """
         >>> data = "( PIN ram_cfg_i[9] )"
-        >>> Lark(net_grammar, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
         ram_cfg_i[9]
         >>> data = "( u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882 CO )"
-        >>> Lark(net_grammar, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
         u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882/CO
         """      
         return port 
@@ -186,7 +166,7 @@ class DefNetsTransformer(Transformer):
     def pin(sef, pin_name: str) -> Port: 
         """
         >>> data = "( PIN ram_cfg_i[9] )"
-        >>> Lark(net_grammar, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
         ram_cfg_i[9]
         """      
         return Port(None, pin_name)
@@ -195,7 +175,7 @@ class DefNetsTransformer(Transformer):
     def port(self, hierarchy_name: str, port_name: str) -> Port: 
         """
         >>> data = "( u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882 CO )"
-        >>> Lark(net_grammar, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='pin_or_port', transformer=DefNetsTransformer()).parse(data)
         u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882/CO
         """      
         return Port(hierarchy_name, port_name)
@@ -213,7 +193,7 @@ class DefNetsTransformer(Transformer):
         ...   NEW metal3 ( 308370 144060 ) via2_5
         ...   NEW metal2 ( 310650 86940 ) via1_4
         ... ;'''
-        >>> Lark(net_grammar, parser='lalr', start='net', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='net', transformer=DefNetsTransformer()).parse(data)
         u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/n1764: (308370,89180,310650,89180) -> (307810,124740,308370,124740) -> (308090,90580,308370,90580) -> (308370,89180) -> (308370,144060) -> (310650,86940)
         """      
         return Net(net_name, ports, elements)
@@ -222,7 +202,7 @@ class DefNetsTransformer(Transformer):
         """
         >>> data = '''( u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882 CO )
         ... ( u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1874 A )'''
-        >>> Lark(net_grammar, parser='lalr', start='port_list', transformer=DefNetsTransformer()).parse(data)
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='port_list', transformer=DefNetsTransformer()).parse(data)
         [u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1882/CO, u_ibex_core/ex_block_i/gen_multdiv_fast_multdiv_i/U1874/A]
         """    
         return ports 
@@ -235,15 +215,14 @@ class DefNetsTransformer(Transformer):
         ...   NEW metal4 ( 308370 89180 ) via3_2
         ...   NEW metal3 ( 308370 144060 ) via2_5
         ...   NEW metal2 ( 310650 86940 ) via1_4'''
-        >>> Lark(net_grammar, parser='lalr', start='element_list', transformer=DefNetsTransformer()).parse(data) # doctest +NORMALIZE_WHITESPACE
+        >>> Lark(DEF_NET_GRAMMAR, parser='lalr', start='element_list', transformer=DefNetsTransformer()).parse(data) # doctest +NORMALIZE_WHITESPACE
         [metal3: (x,y) = 308370 89180 -> (x,y) = 310650 89180, metal4: (x,y) = 307810 124740 -> (x,y) = 308370 124740, metal4: (x,y) = 308090 90580 -> (x,y) = 308370 90580, metal4: (x,y) = 308370 89180, metal3: (x,y) = 308370 144060, metal2: (x,y) = 310650 86940]
         """
         return elements
 
     net_list = list
     
-
-def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[Net]:
+def parse(file_name:str, targeted_functional_unit:str=None) -> List[Net]:
     """
     this function accepts the .def file and targeted functional unit, and then generate a list containing
     parameters:
@@ -252,37 +231,33 @@ def file_parser(file_name:str, targeted_functional_unit:str=None) -> List[Net]:
     output:
         - nets_in_need: out put a net list that contains the intersted net objects
 
-    >>> file_parser("test_file.def", "decoder") # doctest: +ELLIPSIS
+    >>> parse("_doctest_only.def", "decoder") # doctest: +ELLIPSIS
     [u_ibex_core/id_stage_i/decoder_i/n20: (95570,75180,95570,75740) -> (94050,75740,95570,75740) -> (95570,75180,96710,75180), \
 u_ibex_core/id_stage_i/decoder_i/n21: (110390,118300,112290,118300) -> (109250,118300,110390,118300) -> (110390,118300) -> (112290,118300), \
 u_ibex_core/id_stage_i/decoder_i/n22: (90630,97580,91770,97580) -> (89490,97580,90630,97580) -> (91770,97580,91770,98140), \
 u_ibex_core/id_stage_i/decoder_i/n23: (87590,91700,89110,91700) -> (87400,92540,87590,92540) -> (86450,97300,87590,97300) -> (87400,92540,87400,96460) -> (87400,96460,87590,96460) -> (87590,91700,87590,92540) -> (87590,96460,87590,97300) -> (87970,78820,89110,78820) -> (89110,78820,89110,91700) -> (89110,91700,91770,91700) -> (91770,90020,91770,91700) -> (87590,91700) -> (91770,90020)]
     """
 
-    # read the file which is our target
-    with open(file_name, "r") as input_file:
-        data = input_file.read()
+    try: 
+        with open(file_name, "r") as input_file:
+            data = input_file.read()
+    except OSError: 
+        exit(f"Unable to open file \"{file_name}\" for reading.")
     
     match = re.search(r'\bNETS\b\s+\d+\s*;(.*)\bEND NETS\b', data, re.DOTALL | re.MULTILINE)
     
     if not match:
         raise ValueError("Invalid input file")
 
-    # print(data[:match.span(1)[0]].count('\n'))    
     data = match.group(1)
 
-    net_parser = Lark(net_grammar, parser='lalr', start='net_list', transformer=DefNetsTransformer())
+    net_parser = Lark(DEF_NET_GRAMMAR, parser='lalr', start='net_list', transformer=DefNetsTransformer())
     net_data = net_parser.parse(data)
 
     # extract nodes that are needed
-    nets_in_need=[]
-    if targeted_functional_unit in functional_unit_list.keys():
-        for net in net_data:
-            if functional_unit_list[targeted_functional_unit] in net.net_name:
-                nets_in_need.append(net)
-    else:
-        # FIXME: to be extended
-        exit("unsupported functional unit!")
+    nets_in_need = [ net for net in net_data if targeted_functional_unit in net.net_name ]
+
+    assert (len(nets_in_need) > 0), f"Unable to extract nets in unit {targeted_functional_unit}"
 
     return nets_in_need
 
@@ -308,20 +283,35 @@ def find_nearest_neighbour_for_net(net: Net, functional_node_list: List[Net]) ->
     >>> net_name4="u_ibex_core/id_stage_i/decoder_i/n4"
     >>> routing_ports4=[]
     >>> routing_elements4=[RoutingElement('metal2', None, RoutingPoint(3, 2), RoutingPoint(3, 3)), RoutingElement('metal2', None, RoutingPoint(3, 3), RoutingPoint(2, 3))]
+    >>> net_name5="u_ibex_core/id_stage_i/decoder_i/n5"
+    >>> routing_ports5=[]
+    >>> routing_elements5=[RoutingElement('metal1', 'via1', RoutingPoint(0, 1), RoutingPoint(1, 1)), RoutingElement('metal1', None, RoutingPoint(0, 1), RoutingPoint(0, 0))]
     >>> net1=Net(net_name1, routing_ports1, routing_elements1)
     >>> net2=Net(net_name2, routing_ports2, routing_elements2)
     >>> net3=Net(net_name3, routing_ports3, routing_elements3)
     >>> net4=Net(net_name4, routing_ports4, routing_elements4)
-    >>> net_lst=[net1, net2, net3, net4]
+    >>> net5=Net(net_name5, routing_ports5, routing_elements5)
+    >>> net_lst=[net1, net2, net3, net4, net5]
     >>> find_nearest_neighbour_for_net(net1, net_lst)
-    u_ibex_core/id_stage_i/decoder_i/n2: (0,2,2,2) -> (2,2,2,4) -> (2,2,3,2)
+    (u_ibex_core/id_stage_i/decoder_i/n2: (0,2,2,2) -> (2,2,2,4) -> (2,2,3,2), 'metal1')
+    >>> find_nearest_neighbour_for_net(net2, net_lst)
+    (u_ibex_core/id_stage_i/decoder_i/n1: (0,1,1,1) -> (0,1,0,0), 'metal1')
+    >>> find_nearest_neighbour_for_net(net3, net_lst)
+    (u_ibex_core/id_stage_i/decoder_i/n1: (0,1,1,1) -> (0,1,0,0), 'metal1')
+    >>> find_nearest_neighbour_for_net(net4, net_lst)
+    (u_ibex_core/id_stage_i/decoder_i/n4: (3,2,3,3) -> (3,3,2,3), 'metal2')
+    >>> find_nearest_neighbour_for_net(net5, net_lst)
     """
-    node_in_same_layer_list=[]
+    other_nets_in_same_layer = list() 
 
     for n in functional_node_list:
         if n.routing_elements[0].metal_layer == net.routing_elements[0].metal_layer \
             and functional_node_list.index(n) != functional_node_list.index(net):
-            node_in_same_layer_list.append(n)
+            other_nets_in_same_layer.append(n)
+    
+    # No other nets exist in the same metal layer. Consider the same net twice.
+    if len(other_nets_in_same_layer) == 0:
+        return net, net.routing_elements[0].metal_layer
 
     starting_point_distance_from_net = lambda other_net: math.dist(
         [net.routing_elements[0].starting_point.first_coordinate, \
@@ -329,64 +319,44 @@ def find_nearest_neighbour_for_net(net: Net, functional_node_list: List[Net]) ->
         [other_net.routing_elements[0].starting_point.first_coordinate, \
         other_net.routing_elements[0].starting_point.second_coordinate])
 
-    nearest_node = min(node_in_same_layer_list, key = starting_point_distance_from_net)
+    nearest_node = min(other_nets_in_same_layer, key = starting_point_distance_from_net)
 
-    assert nearest_node.routing_elements[0].metal_layer == net.routing_elements[0].metal_layer, "2 nets are different on metal layer!"
+    assert nearest_node.routing_elements[0].metal_layer == net.routing_elements[0].metal_layer, "Nets on different metal layers!"
     return nearest_node, nearest_node.routing_elements[0].metal_layer
 
 def main():
-    param_parser=ap.ArgumentParser(
-        prog="adjacent_nodes_finder.py",
-        description="This file is intended to parse the NETS segment of the '.def' file. \
-            It accepts the name of target functional unit to filter other unexpected nodes",
-        epilog=None
-    )
 
-    param_parser.add_argument("-u","--functional_unit",
-                                action="store",
-                                choices=["adder", "decoder", "compressed_decoder", "lsu"],
-                                help="This argument specifies the targeted functional unit, \
-                                    if 'None' is the param, the program will add all the nodes of the processor.",
-                                required=True
-                                )
-    param_parser.add_argument('-f', "--def_file_name",
-                                action='store',
-                                help="This argument indicates a 'xxx.def' file, or a text file with NETS segment.",
-                                required=True,
-                                metavar="xxx.def"
-                                )  
-    param_parser.add_argument('-o','--output_file',
-                                action='store',
-                                help="this argument indicetes the output file 'xxx.map' of the program, \
-                                default value is 'pair.map'",
-                                default="pair.map",
-                                metavar="xxx_pair.map")    
-    args=param_parser.parse_args()
-    
-    print("#######################")
-    print("##  \033[33mPROGRAM START\033[0m:   ##")
-    print("#######################")
-
-    net_list = file_parser(args.def_file_name, args.functional_unit)
+    net_list = parse(cli_arguments.def_file_name, cli_arguments.functional_unit)
     
     # filter unrouted nets
     net_list = list(filter(lambda net : len(net.routing_elements) > 0, net_list))
 
-    # create pairs
-    pair_list = []
+    neighbouring_nets = list()
     for net in net_list:         
-        # get net couple
         closest_net, metal_layer = find_nearest_neighbour_for_net(net, net_list)
         pair = f"{net.net_name},{closest_net.net_name}"
-        if ','.join(pair.split(',')[::-1]) in pair_list: 
+
+        # For a combination 'a,b' checks whether 'b,a' exists already. 
+        if ','.join(pair.split(',')[::-1]) in neighbouring_nets: 
             continue
-        pair_list.append(pair)
+        
+        neighbouring_nets.append(f"{pair},{metal_layer}")
 
     # write to output file
-    with open(args.output_file, "w") as output:
-        for pair in pair_list:
+    with open(cli_arguments.output_file, "w") as output:
+        for pair in neighbouring_nets:
             output.write(f"{pair}\n")
         
 if __name__=="__main__":
+
+    param_parser=argparse.ArgumentParser()
+
+    param_parser.add_argument("-u","--functional_unit", action = "store", help = "Specifies the targeted functional unit", required = True)
+    param_parser.add_argument('-f', "--def_file_name", action = 'store', help = "Input .def file", required = True, metavar = "xxx.def")  
+    param_parser.add_argument('-o','--output_file', action = 'store', help = "Output file 'xxx.map' ", default = "pair.map", metavar = "xxx_pair.map")    
+    
+    cli_arguments = param_parser.parse_args()
+
     main()
+
 
