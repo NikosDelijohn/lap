@@ -1,4 +1,2 @@
-DEF-LEF Syntax.pdf
-try.py
-try.txt
+*.map
 __pycache__/*
