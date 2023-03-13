@@ -7,9 +7,22 @@ import logging
 logger.setLevel(logging.WARN)
 
 ROUTING_POINTS_GRAMMAR = r"""
-                                                        //                              
-    net_statement: "-" header shield_nets virtual_pins  xtalk? non_default_rule? regular_wirings? use? net_properties ";" \
-         source? fixed_bump? // frequency? estimated_capacitance? weight? net_properties ";"
+                         
+    net_statement: "-" header \
+        shield_nets \
+        virtual_pins \
+        xtalk? \
+        non_default_rule? \
+        regular_wirings \
+        source? \
+        fixed_bump? \
+        frequency? \
+        original_net? \
+        use? \
+        pattern? \
+        estimated_capacitance? \
+        weight? \
+        net_properties ";"
 
     header: NET_NAME ( "(" component_and_pin ")" )*
         ?component_and_pin: COMP_NAME PIN_NAME synthesized?
@@ -30,8 +43,8 @@ ROUTING_POINTS_GRAMMAR = r"""
     ?pattern: "+ PATTERN" PATTERN_KEYWORD
     ?estimated_capacitance: "+ ESTCAP" FLOAT
     ?weight: "+ WEIGHT" POS_INT
-    net_properties: ("+ PROPERTY" net_property+ )*
-        ?net_property: PROPERTY_NAME PROPERTY_VALUE // NOTE: Property Name shall not contain +. Otherwise it is parsed as net_property ( + := PROPRETY issue )
+    net_properties:  net_property*
+    ?net_property: "+ PROPERTY" PROPERTY_NAME PROPERTY_VALUE // NOTE: Property Name shall not contain +. Otherwise it is parsed as net_property ( + := PROPRETY issue )
 
     regular_wirings: regular_wiring* 
     regular_wiring: "+" WIRING LAYER_NAME taper? style? routing_point new_statement+
@@ -499,8 +512,24 @@ class RoutingPointsTransformer(Transformer):
     xtalk = lambda self, value : int(value)
     frequency = lambda self, value : float(value)
     regular_wirings = lambda self, list_of_wiring_statements: list_of_wiring_statements
-    net_property = lambda self, name, value : Property(name,value)
-    net_properties = lambda self, list_of_properties: list_of_properties
+
+    def net_properties(self, list_of_property: List[Property]) -> List[Property]:
+        """
+        >>> data = ''' + PROPERTY PROPERTYF 2
+        ... + PROPERTY PROPERTYG 5'''
+        >>> Lark(ROUTING_POINTS_GRAMMAR, parser='lalr', start='net_properties', transformer=RoutingPointsTransformer()).parse(data) 
+        [Property(name='PROPERTYF', value='2'), Property(name='PROPERTYG', value='5')]
+        """
+        return list_of_property
+
+    @v_args(inline=True)
+    def net_property(self, name: str, value: str) -> Property: 
+        """
+        >>> data = '''+ PROPERTY PROP onE'''
+        >>> Lark(ROUTING_POINTS_GRAMMAR, parser='lalr', start='net_property', transformer=RoutingPointsTransformer()).parse(data) 
+        Property(name='PROP', value='onE')
+        """
+        return Property(str(name), str(value))
 
     @v_args(inline=True)
     def net_statement(self, 
@@ -531,7 +560,8 @@ class RoutingPointsTransformer(Transformer):
         ... NEW metal4 ( 252170 113820 ) ( * 114660 ) via3_2
         ... NEW metal5 ( 249370 113820 ) ( 252170 * ) via4_0
         ... NEW metal6 ( 249370 102620 ) ( * 113820 ) via5_0 
-        ... + PROPERTY property1 15.40 ;'''
+        ... + PROPERTY property1 15.40 
+        ... + PROPERTY prop juj ;'''
         >>> Lark(ROUTING_POINTS_GRAMMAR, parser='lalr', start='net_statement', transformer=RoutingPointsTransformer()).parse(data) 
         """
         print(header)
