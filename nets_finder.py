@@ -21,16 +21,16 @@ def plot_nets(nets: List[Net]) -> None:
     files ONLY.
     """
     metal_layers = {
-        "metal1" : "blue",
-        "metal2" : "red",
-        "metal3" : "green",
-        "metal4" : "cyan",
-        "metal5" : "purple",
-        "metal6" : "orange",
-        "metal7" : "yellow",
-        "metal8" : "magenta",
-        "metal9" : "indigo",
-        "metal10": "black"
+        "metal1" : "red",
+        "metal2" : "yellow",
+        "metal3" : "lime",
+        "metal4" : "mediumturquoise",
+        "metal5" : "dodgerblue",
+        "metal6" : "fuchsia",
+        "metal7" : "darkorchid",
+        "metal8" : "crimson",
+        "metal9" : "orange",
+        "metal10": "lime"
     }
 
     for net in nets:
@@ -191,7 +191,8 @@ def find_minimum_distance_across_layers(net: Net, KDtrees: Dict[str,KDTree], lay
     Out of these, it returns the one with the smallest distance to be its neighbour. Considers all
     layers. Optionally, interpolation mode can be used (computationally heavy) which breaks down 
     each metal strip in smaller segments and repeats the flow for each sub-strip. Better accuracy
-    in the cost of computational time.
+    in the cost of computational time. Both of these approaches perform comparisons with metal strips 
+    on the same metal layer as the `net` strip in each loop.
     """
     minimum_distance = np.inf
     minimum_distance_net_index = None
@@ -292,9 +293,9 @@ def main():
         elif cli_arguments.grouping_mode == "insane":
             closest_net, metal_layer = find_minimum_distance_across_layers(net, distance_trees, layer_mapping, interpolate=True)
         pair = f"{net.get_name()},{closest_net.get_name()}"
-
-        # For a combination 'a,b' checks whether 'b,a' exists already.
-        if f"{closest_net.get_name()},{net.get_name()}" in neighbouring_nets:
+        
+        # For a combination 'a,b' checks whether 'b,a' exists already.           
+        if f"{closest_net.get_name()},{net.get_name()},{metal_layer}" in neighbouring_nets:
             continue
         neighbouring_nets.append(f"{pair},{metal_layer}")
 
