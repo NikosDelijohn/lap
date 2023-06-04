@@ -1,4 +1,4 @@
-# Net Minimum Distance Finder   
+# LAP: Layout Aware Pairing    
 This tool computes minimum distances between nets of a circuit layout by parsing **the corresponding section** of a given [DEF](https://en.wikipedia.org/wiki/Design_Exchange_Format) file. 
 
 The parsing is done by the `net_parsing.py` package that contains the respective grammar, transformer and the generated dataclasses that store the parsed content. The tool is using [Lark](https://lark-parser.readthedocs.io/en/latest/index.html) as an underline engine to parse the `larl` grammar of the NETS subsection of the DEF file.
